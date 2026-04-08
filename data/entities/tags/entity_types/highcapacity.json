@@ -2,7 +2,9 @@
     "replace": false,
     "values": [
         "minecraft:painting",
-        "minecraft:item_frame"
+        "minecraft:item_frame",
+        "minecraft:item_display",
+        "minecraft:glow_item_frame"
         
     ]
   }

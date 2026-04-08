@@ -1,6 +1,7 @@
 execute as @e[type=armor_stand,distance=..5,tag=interact] if data entity @s HandItems[0].id run execute at @s as @s run function dlc:modify/replace
-execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 if predicate players:holding/mainhand unless predicate players:holding/syzygy run execute at @s run function dlc:modify/valid_m
-execute as @e[type=armor_stand,distance=..5,tag=display,tag=!invalid] if data entity @s HandItems[0].id unless predicate players:holding/asc unless predicate players:holding/avstate unless predicate players:holding/calamity unless predicate players:holding/frenzy unless predicate players:holding/leviathan unless predicate players:holding/oblivion unless predicate players:holding/syzygy unless predicate players:holding/male unless predicate players:holding/mainhand run function dlc:modify/invalid_m
+execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 unless predicate players:holding/leviathan unless predicate players:holding/prismatic unless predicate players:holding/wings if predicate players:holding/mainhand unless predicate players:holding/syzygy unless predicate players:holding/proxigea run execute at @s run function dlc:modify/valid_m
+
+execute as @e[type=armor_stand,distance=..5,tag=display,tag=!invalid] if data entity @s HandItems[0].id unless predicate players:holding/asc unless predicate players:holding/avstate unless predicate players:holding/avstate2 unless predicate players:holding/calamity unless predicate players:holding/frenzy unless predicate players:holding/oblivion unless predicate players:holding/syzygy unless predicate players:holding/male unless predicate players:holding/mainhand unless predicate players:holding/wings unless predicate players:holding/prismatic unless predicate players:holding/leviathan unless predicate players:holding/proxigea run function dlc:modify/invalid_m
 execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] if predicate players:holding/upgrade2 run execute at @s run function dlc:modify/maxed
 
 
@@ -38,7 +39,14 @@ execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predi
 
 execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 if predicate players:holding/frenzy run execute at @s run function dlc:modify/valid_fre
 
-execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 if predicate players:holding/leviathan run execute at @s run function dlc:modify/valid_lev
+execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 if predicate players:holding/leviathan run execute at @s run function dlc:modify/maxed
+
+
+execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 if predicate players:holding/wings run execute at @s run function dlc:modify/maxed
+
+execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 unless score #unspoken bool matches 1 if predicate players:holding/prismatic run execute at @s run function dlc:modify/valid_pri
+
+execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 if score #unspoken bool matches 1 if predicate players:holding/prismatic run execute at @s run function dlc:modify/maxed
 
 execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 if predicate players:holding/male run execute at @s run function dlc:modify/valid_mal
 
@@ -46,15 +54,22 @@ execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predi
 
 execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 if predicate players:holding/avstate run execute at @s run function dlc:modify/valid_zen
 
-execute as @e[type=armor_stand,distance=..5,tag=interact,tag=!valid] unless predicate players:holding/upgrade2_c if predicate players:wearing_glider run execute at @s run function dlc:modify/valid_wings
+execute as @e[type=armor_stand,distance=..5,tag=interact,tag=!valid] unless predicate players:holding/upgrade2_c if score #unspoken bool matches 1 if predicate players:wearing_glider run execute at @s run function dlc:modify/valid_wings
+
+execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 if score #unspoken bool matches 1 if predicate players:holding/proxigea run execute at @s run function dlc:modify/valid_lev
+
+execute as @e[type=armor_stand,distance=..5,tag=interact,tag=!valid] unless predicate players:holding/upgrade2_c unless score #unspoken bool matches 1 if predicate players:wearing_glider run execute at @s run function dlc:modify/power_c
+
+execute as @e[type=armor_stand,distance=..5,tag=display,tag=!valid] unless predicate players:holding/upgrade2 unless score #unspoken bool matches 1 if predicate players:holding/proxigea run execute at @s run function dlc:modify/power
 
 
 
 
-execute as @e[type=marker,tag=sphere_energy] at @s run function particle:sphere/animate
-execute as @e[type=marker,tag=sphere_energy] at @s run execute as @a[distance=..6] run effect clear @s regeneration
-execute as @e[type=marker,tag=sphere_energy] at @s run execute as @a[distance=..6] run effect clear @s resistance
-execute as @e[type=marker,tag=sphere_energy] at @s run execute as @a[distance=..6] run effect clear @s saturation
-execute as @e[type=armor_stand,distance=..5,tag=interact] unless predicate players:holding/asc unless predicate players:holding/avstate unless predicate players:holding/calamity unless predicate players:holding/frenzy unless predicate players:holding/leviathan unless predicate players:holding/oblivion unless predicate players:holding/syzygy unless predicate players:holding/male unless predicate players:holding/mainhand unless predicate players:holding/boots unless predicate players:holding/leggings unless predicate players:holding/chestplate unless predicate players:holding/helmet unless predicate players:wearing_glider run function dlc:modify/stopothers
-execute as @e[type=armor_stand,distance=..5,tag=display] unless predicate players:holding/asc unless predicate players:holding/avstate unless predicate players:holding/calamity unless predicate players:holding/frenzy unless predicate players:holding/leviathan unless predicate players:holding/oblivion unless predicate players:holding/syzygy unless predicate players:holding/male unless predicate players:holding/mainhand unless predicate players:holding/boots unless predicate players:holding/leggings unless predicate players:holding/chestplate unless predicate players:holding/helmet run function dlc:modify/stopmainhand
+execute unless score #terminusoff bool matches 1 as @e[type=marker,tag=sphere_energy] at @s run function particle:sphere/animate
+execute as @e[type=armor_stand,distance=..5,tag=interact] unless predicate players:holding/asc unless predicate players:holding/avstate unless predicate players:holding/avstate2 unless predicate players:holding/calamity unless predicate players:holding/frenzy unless predicate players:holding/oblivion unless predicate players:holding/syzygy unless predicate players:holding/male unless predicate players:holding/mainhand unless predicate players:holding/boots unless predicate players:holding/leggings unless predicate players:holding/chestplate unless predicate players:holding/helmet unless predicate players:wearing_glider run function dlc:modify/stopothers
+execute as @e[type=armor_stand,distance=..5,tag=display] unless predicate players:holding/asc unless predicate players:holding/avstate unless predicate players:holding/avstate2 unless predicate players:holding/calamity unless predicate players:holding/frenzy unless predicate players:holding/oblivion unless predicate players:holding/syzygy unless predicate players:holding/male unless predicate players:holding/mainhand unless predicate players:holding/boots unless predicate players:holding/leggings unless predicate players:holding/chestplate unless predicate players:holding/helmet run function dlc:modify/stopmainhand
 
+
+scoreboard players add #station timer 1
+execute as @e[tag=visual,distance=..5] at @s positioned ~ ~1.25 ~ if score #station timer matches 6.. run function particle:term/animate
+execute if score #station timer matches 6.. run scoreboard players reset #station timer

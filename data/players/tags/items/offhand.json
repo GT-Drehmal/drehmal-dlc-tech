@@ -1,9 +1,11 @@
 {
     "replace": false,
     "values": [
-      "mcdw:gauntlet_soul_fists",
       "minecraft:shield",
-      "mcdw:shield_royal_guard"
+      "mcdw:shield_royal_guard",
+      "dlc:providence",
+      "dlc:amarantheon",
+      "mcdw:shield_vanguard"
     ]
   }
   

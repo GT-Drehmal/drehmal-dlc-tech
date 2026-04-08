@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Resonant:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/resonant"
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "dlc:resonant_string"
+        },
+        "title": {
+            "color": "gold",
+            "text": "Resonant String"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained a Divine Upgrade Component"
+        },
+        "hidden": true,
+        "show_toast": true
+        
+    },
+    "parent": "weapons:shard_of_nothing"
+}

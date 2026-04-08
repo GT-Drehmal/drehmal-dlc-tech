@@ -1,7 +1,7 @@
 [
   {
       "function":"set_nbt",
-      "tag":"{CustomModelData:2,AttributeModifiers:[]}"
+    "tag": "{weapon_attributes:'{\"parent\":\"minecraft:zenith\"}',CustomModelData:2,AttributeModifiers:[]}"
   },
   {
     "function": "set_attributes",

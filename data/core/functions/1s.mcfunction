@@ -5,7 +5,6 @@ execute unless score #send_feedback_on bool matches 1 run gamerule sendCommandFe
 execute if entity @e[tag=enemy_proj] run schedule function projectiles:main 1t
 
 execute if entity @a[predicate=players:the_end] in minecraft:the_end run function core:gateway_remove
-
 execute if score #sunmoon0_active? bool matches 1 run function core:scene/sunmoon/main0
 execute if score #sunmoon1_active? bool matches 1 run function core:scene/sunmoon/main1
 execute if score #sunmoon2_active? bool matches 1 run function core:scene/sunmoon/main2
@@ -18,5 +17,3 @@ execute unless score #avsys_p1 bool matches 1.. run function core:avsys_p1
 execute unless score #stomb_p bool matches 1.. run function core:stomb_p
 
 execute unless score #creditsplayed? bool matches 1 if entity @a[predicate=core:credits_box,predicate=players:is_not_dev] run function core:scene/credits/0
-
-

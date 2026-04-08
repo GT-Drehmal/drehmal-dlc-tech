@@ -1,6 +1,15 @@
 tag @s remove em.nohit_reward
-scoreboard players add #some1_died bool 1
+tag @s remove ossein.nohit_reward
+tag @s remove anyr_active
+tag @s remove anyr_cd
+tag @s remove zen
+scoreboard players reset @s anyr_timer
+scoreboard players reset @s anyr_particles
+scoreboard players reset @s hp_old
+scoreboard players reset @s max_hp
+attribute @s minecraft:generic.max_health base set 20
 
+scoreboard players add #some1_died bool 1
 execute if entity @s[tag=supersoldier] run effect clear @s speed
 execute if entity @s[tag=supersoldier] run effect clear @s jump_boost
 execute if entity @s[tag=supersoldier] run tag @s remove supersoldier
@@ -45,7 +54,6 @@ execute if entity @s[predicate=players:is_not_dev,tag=!has_temp_spawn] run funct
 
 execute if entity @s[tag=syzygy_crawl] run function players:items/syzygy/endcrawl
 execute as @a[tag=obv_active] if score @s OBVuuid0 = #temp uuid0 if score @s OBVuuid1 = #temp uuid1 if score @s OBVuuid2 = #temp uuid2 if score @s OBVuuid3 = #temp uuid3 run function players:items/obv/end_hold
-
 scoreboard players reset @s cal_cool
 scoreboard players reset @s asc_cool
 scoreboard players reset @s fzy_cool
@@ -53,38 +61,53 @@ scoreboard players reset @s mb_cool
 scoreboard players reset @s sy_cool
 scoreboard players reset @s obv_cool
 scoreboard players reset @s mal_cool
-scoreboard players reset @s shield_cool
+tag @s remove dash_cd
+execute as @s[tag=tempdeaths] run scoreboard players add @s tempdeaths 1
+execute as @s[tag=tempdeaths] run tag @s remove tempdeaths
 
-execute if score count_all towers matches 2 as @a run fmvariable set terminus false 1
-execute if score count_all towers matches 2 as @a run fmvariable set pre25 false 0
+execute as @s[tag=hegemondeaths] run scoreboard players add #hegemon hegemon 1
+execute as @s[tag=hegemondeaths] run function dlc:primal_journey/hegemon/kill
+execute as @s[tag=hegemondeaths] run tag @s remove hegemondeaths
 
-execute if score count_all towers matches 1.. as @a run fmvariable set avsal false 1
+execute as @s[tag=ossein_defaultdeaths] run scoreboard players add #ossein_default ossein_default 1
+execute as @s[tag=ossein_defaultdeaths] run function dlc:primal_journey/ossein_default/kill
+execute as @s[tag=ossein_defaultdeaths] run tag @s remove ossein_defaultdeaths
 
-execute if score count_all towers matches 8 as @a run fmvariable set pre25 false 1
-execute if score count_all towers matches 9 as @a run fmvariable set pre50 false 0
+execute as @s[tag=ossein_primedeaths] run scoreboard players add #ossein_prime ossein_prime 1
+execute as @s[tag=ossein_primedeaths] run function dlc:primal_journey/ossein_prime/kill
+execute as @s[tag=ossein_primedeaths] run tag @s remove ossein_primedeaths
 
-execute if score count_all towers matches 16 as @a run fmvariable set pre50 false 1
-execute if score count_all towers matches 17 as @a run fmvariable set pre75 false 0
+execute as @s[tag=bernicedeaths] run scoreboard players add #bernice bernice 1
+execute as @s[tag=bernicedeaths] run function dlc:primal_journey/bernice/kill
+execute as @s[tag=bernicedeaths] run tag @s remove bernicedeaths
 
-execute if score count_all towers matches 24 if score lo_dahr towers matches 1 as @a run fmvariable set pre75 false 1
-execute if score lo_dahr towers matches 1 as @a run fmvariable set aphelion false 1
+execute as @s[tag=tethdeaths] run scoreboard players add #teth teth 1
+execute as @s[tag=tethdeaths] run function dlc:primal_journey/teth/kill
+execute as @s[tag=tethdeaths] run tag @s remove tethdeaths
+
+execute as @s[tag=courtdeaths] run scoreboard players add #court court 1
+execute as @s[tag=courtdeaths] run function dlc:primal_journey/court/kill
+execute as @s[tag=courtdeaths] run tag @s remove courtdeaths
+
+execute as @s[tag=generalsdeaths] run scoreboard players add #generals generals 1
+execute as @s[tag=generalsdeaths] run function dlc:primal_journey/generals/kill
+execute as @s[tag=generalsdeaths] run tag @s remove generalsdeaths
+
+execute as @s[tag=emissarydeaths] run scoreboard players add #emissary emissary 1
+execute as @s[tag=emissarydeaths] run function dlc:primal_journey/emissary/kill
+execute as @s[tag=emissarydeaths] run tag @s remove emissarydeaths
+
+execute as @s[tag=primal_journey] run function dlc:primal_journey/die
 
 
-execute if score count_all towers matches 25 as @a run fmvariable set core false 1
-execute if score #coretrigs int matches 1.. as @a run fmvariable set core_inside false 1
-execute if score count_all towers matches 27 if score lo_dahr towers matches 1 as @a run fmvariable set pre100 false 0
+execute store result score @s temp run clear @s minecraft:black_dye{VoidRecall:1b} 0
+execute if score @s temp matches 1.. run function players:items/obv/check
 
 
-execute if score #5mbleft bool matches 1 as @a run fmvariable set salmevir false 1
-
-execute if score #7mbright bool matches 1 as @a run fmvariable set exodus false 1
-
-execute as @a[advancements={advancements:primordial/enter_yav=true}] run execute as @a run fmvariable set yav false 1
-execute as @a[advancements={advancements:primordial/azimuth=true}] run execute as @a run fmvariable set azimuth false 1
-execute as @a[advancements={advancements:primordial/god_machine=true}] run execute as @a run fmvariable set god_machine false 1
-execute as @a[advancements={advancements:primordial/heart=true}] run execute as @a run fmvariable set end false 1
-execute as @a[advancements={advancements:primordial/closure=true}] run execute as @a run fmvariable set primal_end false 1
-execute as @a[advancements={weapons:bundle=true}] run execute as @a run fmvariable set arcane false 1
-execute as @a[advancements={weapons:tempest=true}] run execute as @a run fmvariable set tempest false 1
-execute as @a[advancements={weapons:eldorite=true}] run execute as @a run fmvariable set eldorite false 1
-execute as @a[advancements={weapons:destinyblade=true}] run execute as @a run fmvariable set dblade false 1
+scale reset @s
+tag @s remove freefall
+tag @s remove initialloop
+tag @s remove suffering
+tag @s remove disabled
+tag @s remove waterspiked
+scoreboard players reset @s spm.x

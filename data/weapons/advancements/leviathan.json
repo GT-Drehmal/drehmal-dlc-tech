@@ -1,15 +1,15 @@
 {
     "display": {
         "title": {
-            "text": "Leviathan's Coil",
+            "text": "Leviathan",
             "color": "dark_red"
         },
         "description": {
-            "text": "Unlocked the Unspoken Leviathan's Coil",
+            "text": "Obtained Leviathan, the unspoken wrath of the deep.",
             "color": "gray"
         },
         "icon": {
-            "item": "mcdw:whip_whip"
+            "item": "dlc:leviathan"
         },
         "frame": "task",
         "show_toast": true,
@@ -31,5 +31,5 @@
             }
         }
     },
-    "parent": "weapons:syzygy"
+    "parent": "advancements:mystery/power"
 }

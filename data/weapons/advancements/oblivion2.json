@@ -11,11 +11,12 @@
             "text": "Oblivion ✪"
         },
         "description": {
-            "text": "Upgraded Oblivion, THE TRUE SCYTHE THAT DESTROYED AVSOHM",
+            "text": "Communed with a higher being to upgrade Oblivion, the Pawn's scythe.",
             "color": "gray"
         },
         "icon": {
-            "item": "minecraft:sheep_spawn_egg"
+      "item": "minecraft:netherite_sword",
+      "nbt": "{CustomModelData:51}"
         },
         "frame": "task",
         "show_toast": true,

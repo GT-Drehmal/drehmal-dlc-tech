@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Force:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/thunder"
+        
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "mcdw:hammer_stormlander"
+        },
+        "title": {
+            "color": "red",
+            "text": "Force Majeure"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained Force Majeure, a relic of the Tempests' former might."
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:seren"
+}

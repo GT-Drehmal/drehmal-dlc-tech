@@ -1,5 +1,7 @@
 scoreboard players set dlc#c spawnstarrite1 1
-tellraw @s {"text":"This may take a while... do not run any additional commands till this is finished","bold":true,"color":"dark_red"}
+tellraw @s {"text":"This may take a while... do not run any additional commands until this is finished","bold":true,"color":"dark_red"}
+
+execute positioned 392.33 68.00 913.87 run forceload add ~ ~
 
 execute positioned 365.60 65.00 917.76 run forceload add 362 901 411 938
 
@@ -78,5 +80,8 @@ execute positioned -1287.47 122.00 3809.51 run forceload add ~ ~
 execute positioned -23.56 106.00 5252.51 run forceload add ~ ~
 
 schedule function dlc:starrite1_2 3s
+
+
+execute if score count_all towers matches 8.. run schedule function terminus:gifts/7/0 2s
 
 tag @s add DLC_temp

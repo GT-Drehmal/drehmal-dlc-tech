@@ -1,6 +1,7 @@
 execute unless entity @s[tag=yav_dia_end] run function players:name_game/yavmain
 
 execute if entity @s[x=26476,y=206,z=-106,distance=..150] run function core:scene/invul_adventure
+execute as @s[predicate=players:in_primal_journey] run function core:scene/invul_adventure
 execute if score #5T timer matches 0 unless score #game_started bool matches 1 if entity @s[x=26512,y=176,z=-93,dx=16,dy=16,dz=19] run scoreboard players set @s playingMusic 2147483647
 
 execute if score #1S timer matches 0 if entity @s[x=26400,y=65,z=-362,dx=121,dy=20,dz=127] run kill @s
@@ -29,6 +30,8 @@ execute if score #5T timer matches 0 if predicate players:locations/foundry_infu
 execute if entity @s[x=-3288,y=147,z=1579,dx=24,dy=2,dz=24,predicate=players:is_not_dev] run function players:misc/fdry_pit
 execute if score #fdry_door int matches 3 if entity @s[x=-3276,y=159,z=1570,distance=..12,predicate=players:is_not_dev] run function foundry:levers/door
 execute if score #5T timer matches 0 unless score #fdry_active bool matches 1 unless score #fdry_completed? bool matches 1 if entity @s[x=-3308.0,y=104.0,z=1546.00,dx=64,dz=34,dy=4.5,predicate=players:is_not_dev] run function foundry:open/0
+
+execute if score #5T timer matches 0 unless score #fdry_active bool matches 1 if score #fdry_completed? bool matches 1 if score #fdry_charged bool matches 1 unless score #valhalla bool matches 1 if entity @s[x=-3308.0,y=104.0,z=1546.00,dx=64,dz=34,dy=4.5,predicate=players:is_not_dev] run function foundry:open2/0
 
 execute if entity @s[tag=fdry_music] run function foundry:music/tick
 

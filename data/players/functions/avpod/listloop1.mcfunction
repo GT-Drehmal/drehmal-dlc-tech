@@ -113,5 +113,19 @@ execute if score #songid temp matches 55 run tellraw @s [""," -",{"text":"[At Th
 
 execute if score #songid temp matches 56 run tellraw @s [""," -",{"text":"[Death of a World]","color":"white","clickEvent":{"action":"run_command","value":"/trigger avpod.menu_press set 156"},"hoverEvent":{"action":"show_text","contents":[{"text":"Theme of ","color":"gray"},{"text":"The End","color":"aqua"},"\n",{"text":"Click to Play!","color":"yellow"}]}},"-"]
 
+execute if score #songid temp matches 57 run tellraw @s [""," -",{"text":"[Fate of the Fettered]","color":"gray","clickEvent":{"action":"run_command","value":"/trigger avpod.menu_press set 157"},"hoverEvent":{"action":"show_text","contents":[{"text":"Theme of ","color":"gray"},{"text":"Shatterhorn Gulch","color":"aqua"},"\n",{"text":"Click to Play!","color":"yellow"}]}},"-"]
+
+execute if score #songid temp matches 58 run tellraw @s [""," -",{"text":"[Xor'huul]","color":"light_purple","clickEvent":{"action":"run_command","value":"/trigger avpod.menu_press set 158"},"hoverEvent":{"action":"show_text","contents":[{"text":"Theme of ","color":"gray"},{"text":"Xor'Huul","color":"aqua"},"\n",{"text":"Click to Play!","color":"yellow"}]}},"-"]
+
+execute if score #songid temp matches 59 run tellraw @s [""," -",{"text":"[Furtherance]","color":"red","clickEvent":{"action":"run_command","value":"/trigger avpod.menu_press set 159"},"hoverEvent":{"action":"show_text","contents":[{"text":"Theme of ","color":"gray"},{"text":"Red Dawn","color":"aqua"},"\n",{"text":"Click to Play!","color":"yellow"}]}},"-"]
+
+execute if score #songid temp matches 60 run tellraw @s [""," -",{"text":"[Obsolescence]","color":"dark_red","clickEvent":{"action":"run_command","value":"/trigger avpod.menu_press set 160"},"hoverEvent":{"action":"show_text","contents":[{"text":"Theme of ","color":"gray"},{"text":"Hegemon","color":"aqua"},"\n",{"text":"Click to Play!","color":"yellow"}]}},"-"]
+
+execute if score #songid temp matches 61 run tellraw @s [""," -",{"text":"[Mark of the Burnt]","color":"gold","clickEvent":{"action":"run_command","value":"/trigger avpod.menu_press set 161"},"hoverEvent":{"action":"show_text","contents":[{"text":"Theme of ","color":"gray"},{"text":"The Burnt Generals","color":"aqua"},"\n",{"text":"Click to Play!","color":"yellow"}]}},"-"]
+
+execute if score #songid temp matches 62 run tellraw @s [""," -",{"text":"[Sal'Anyr]","color":"light_purple","clickEvent":{"action":"run_command","value":"/trigger avpod.menu_press set 162"},"hoverEvent":{"action":"show_text","contents":[{"text":"Theme of ","color":"gray"},{"text":"Sal'Anyr","color":"aqua"},"\n",{"text":"Click to Play!","color":"yellow"}]}},"-"]
+
+
+
 execute if score #songid temp matches 1.. run data remove storage drehmal:players tempSongList[0]
 execute if score #listloop temp matches 1.. run function players:avpod/listloop1

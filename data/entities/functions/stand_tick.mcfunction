@@ -28,3 +28,11 @@ execute if entity @s[tag=soletta_stone] if entity @p[distance=..64] run function
 execute if entity @s[tag=soletta_weapon] if entity @p[distance=..64] run function core:scene/soletta/display/weapon_spin
 execute if entity @s[name="osteostand"] unless entity @p[predicate=players:holding/osteo] run function players:items/osteo/osteokill
 execute if entity @s[name="osteowhip"] unless entity @p[predicate=players:holding/osteo] run function players:items/osteo/osteokill
+
+execute if entity @s[tag=slime_puddle] run function dlc:mobs/primal_splitter/shoot_tick
+#execute if entity @s[tag=spawn] run function entities:spawn/main_stand
+
+#execute if entity @s[tag=em_summon] run function entities:ai/emissary/summon/tick
+
+execute if entity @s[tag=obscythe] at @s run function players:items/obv/entity
+execute if entity @s[tag=apotheosis] at @s run function players:items/levi/entity

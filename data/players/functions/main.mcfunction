@@ -23,8 +23,77 @@ execute if score #5T timer matches 0 if entity @s[predicate=players:is_not_dev] 
 execute if score #1S timer matches 8 run function players:check_passive_items
 
 #--------#
+#BLAZE PANTS#
+#--------#
+execute if predicate players:wearing_blaze run function players:items/blaze/buff
+
+#--------#
+#FOCUS#
+#--------#
+execute if predicate players:wearing_pearl run function players:items/focus/buff
+execute unless predicate players:wearing_pearl run function players:items/focus/buff_remove
+
+#--------#
+#STAR HELMET#
+#--------#
+execute if predicate players:wearing_starry run function players:items/star_helm/main
+execute if score @s soundfix matches 1.. run scoreboard players remove @s soundfix 1
+execute unless predicate players:wearing_starry run attribute @s minecraft:generic.movement_speed modifier remove ce887b47-db5e-41be-ab92-4b6eb53c48c2
+
+#--------#
+#COMPOSITION#
+#--------#
+execute if predicate players:wearing_comp run function players:items/comp/buff
+execute unless predicate players:wearing_comp run function players:items/comp/buff_remove
+
+#--------#
+#FLESH#
+#--------#
+#execute if score @s flesh_timer matches 1.. run effect give @s minecraft:hunger 1 49 true
+#
+#execute if score @s flesh_level matches 1 run attribute @s minecraft:generic.max_health modifier add dc9e15b1-0724-41bf-9d7b-8b831d1c2ee2 flesh 5 add
+#execute if score @s flesh_level matches 2 run attribute @s minecraft:generic.max_health modifier add 8ba9cd06-534b-4524-84b2-789c15f0acac flesh 5 add
+#execute if score @s flesh_level matches 3 run attribute @s minecraft:generic.max_health modifier add 9273ff45-5bdb-4e37-8315-257ee86a92fe flesh 5 add
+#execute if score @s flesh_level matches 4 run attribute @s minecraft:generic.max_health modifier add 94309d62-d204-4db8-8c1b-3ee325fe7212 flesh 5 add
+#
+#execute if score @s flesh_level matches ..0 run attribute @s minecraft:generic.max_health modifier remove dc9e15b1-0724-41bf-9d7b-8b831d1c2ee2
+#execute if score @s flesh_level matches ..0 run attribute @s minecraft:generic.max_health modifier remove 8ba9cd06-534b-4524-84b2-789c15f0acac
+#execute if score @s flesh_level matches ..0 run attribute @s minecraft:generic.max_health modifier remove 9273ff45-5bdb-4e37-8315-257ee86a92fe
+#execute if score @s flesh_level matches ..0 run attribute @s minecraft:generic.max_health modifier remove 94309d62-d204-4db8-8c1b-3ee325fe7212
+#
+#execute if score @s flesh_level matches 1 run particle dust 0.68 0.0 0.0 1 ~ ~0.25 ~ 0.2 -0.25 0.2 9 5
+#execute if score @s flesh_level matches 2 run particle dust 0.58 0.0 0.0 1 ~ ~0.25 ~ 0.225 -0.25 0.225 9 7
+#execute if score @s flesh_level matches 3 run particle dust 0.48 0.0 0.0 1 ~ ~0.25 ~ 0.25 -0.25 0.25 9 10
+#execute if score @s flesh_level matches 4 run particle dust 0.38 0.0 0.0 1 ~ ~0.25 ~ 0.275 -0.25 0.275 9 15
+#
+#execute if score @s flesh_level matches -100.. unless predicate players:holding/flesh run scoreboard players reset @s flesh_level
+#execute if score @s flesh_timer matches -100.. unless predicate players:holding/flesh run scoreboard players reset @s flesh_timer
+#execute unless score @s flesh_timer matches ..0 run scoreboard players remove @s flesh_timer 1
+#execute if score @s flesh_timer matches ..0 run scoreboard players set @s flesh_level 0
+
+#--------#
+#AVRAD#
+#--------#
+execute as @s[predicate=players:holding/avrad,tag=!disabled] if score @s avrad_cool matches 0.. run function players:items/avrad/actionbar
+execute if score @s avrad_charge_c matches 1.. run scoreboard players remove @s avrad_charge_c 1
+
+scoreboard players operation @s washoldingavrad = @s holdingavrad
+scoreboard players reset @s holdingavrad
+execute store result score @s[tag=!disabled] holdingavrad if predicate players:holding/avrad
+
+execute if score @s wasHoldingavrad matches 1 if score @s holdingavrad matches 0 if score @s avrad_charge matches 1.. run function players:items/avrad/reset
+execute if score @s avrad_charge matches 1.. if score @s avrad_charge_c matches ..0 run function players:items/avrad/reset
+
+execute if score @s holdingavrad matches 1 if score @s avrad_charge_c matches 1.. run function players:items/avrad/main
+
+execute unless score @s avrad_cool matches ..-1 run scoreboard players remove @s avrad_cool 1
+
+#--------#
 #TRIGGERS#
 #--------#
+
+# Cynthia's quest trigger patch
+execute as @s run function triggerpatch:quests/tick
 
 #execute if score @s invulMythics matches -2147483648.. unless score @s invulMythics matches 0 run function players:triggers/invul_mythics
 #execute if score @s mythicPvp matches -2147483648.. unless score @s mythicPvp matches 0 run function players:triggers/mythic_pvp
@@ -35,8 +104,7 @@ execute if score @s Settings matches -2147483648.. unless score @s Settings matc
 execute if score @s avpod.menu_press matches -2147483648.. unless score @s avpod.menu_press matches 0 run function players:triggers/avpod_root
 execute if score @s d.relic_vessel matches -2147483648.. unless score @s d.relic_vessel matches 0 run function entities:dropped_items/devotion/vessel/give/trigger
 execute if score @s terminus.compass matches -2147483648.. unless score @s terminus.compass matches 0 run function terminus:gifts/trigger
-# Cynthia's quest trigger patch
-execute as @s run function triggerpatch:quests/tick
+
 
 #----#
 #WORM#
@@ -85,6 +153,9 @@ execute if score #5T timer matches 0 if score @s soulDamage matches 1.. run part
 # Avsohm'Kohl Stuff
 execute if entity @s[tag=wearing_avsmkohl] if predicate players:holding/riptide_trident run function players:items/avsohm_kohl/holding_riptide
 execute if score @s fly_cm matches 1.. if entity @s[tag=wearing_avsmkohl] run function players:items/avsohm_kohl/main
+execute as @s[advancements={weapons:wings=true}] if predicate players:holding/riptide_trident if predicate dlc:wings run function players:items/avsohm_kohl/wings_holding_riptide
+execute if score @s fly_cm matches 1.. if predicate dlc:wings run function players:items/avsohm_kohl/main
+execute as @s[tag=wearing_avsmkohl] if predicate dlc:wings run function players:items/avsohm_kohl/unequip
 scoreboard players reset @s fly_cm
 scoreboard players reset @s usedFirework
 
@@ -132,11 +203,12 @@ execute if predicate players:daytime run function players:misc/1aday_refresh
 
 scoreboard players operation @s wasHoldingAvs = @s holdingAvs
 scoreboard players reset @s holdingAvs
-execute store success score @s holdingAvs if predicate players:holding/avstate if predicate players:holding/zenith2
+execute store success score @s[tag=!disabled] holdingAvs if predicate players:holding/avstate2 if predicate players:holding/zenith2
 execute if score @s wasHoldingAvs matches 1 if score @s drop_zenith matches 1 run function players:items/avsaber/misfire
 
-execute store success score @s HoldingAv if predicate players:holding/holdingav
-execute if score @s HoldingAv matches 1.. run function players:items/avsaber/holdingav
+
+execute store success score @s[tag=!disabled] HoldingAv if predicate players:holding/holdingav
+execute if score @s[tag=!disabled] HoldingAv matches 1.. run function players:items/avsaber/holdingav
 
 execute if score @s UsedAvSaber matches 1.. run scoreboard players set @s UsedAvSaber 0
 execute if score @s AvDamage matches 1.. run scoreboard players set @s AvDamage 0
@@ -151,8 +223,8 @@ execute if score @s AvTimer matches 80.. run scoreboard players set @s AvTimer 0
 
 scoreboard players operation @s wasHoldingObv = @s holdingObv
 scoreboard players reset @s holdingObv
-execute store success score @s holdingObv if predicate players:holding/oblivion
-
+execute store success score @s[tag=!disabled] holdingObv if predicate players:holding/oblivion
+execute as @s[tag=disabled] run scoreboard players set @s wasHoldingObv 0
 execute if score @s holdingObv matches 1 if score @s wasHoldingObv matches 0 run scoreboard players set @s maxObvCooldown 800
 execute if score @s holdingObv matches 1 if score @s wasHoldingObv matches 0 if predicate players:holding/cooldown_ench run scoreboard players set @s maxObvCooldown 600
 execute if entity @s[tag=obv_active] run function players:items/obv/active
@@ -160,7 +232,7 @@ execute if entity @s[tag=obv_active] run function players:items/obv/active
 execute if score @s holdingObv matches 0 if score @s wasHoldingObv matches 1 unless score @s drop_netherite matches 1 if entity @s[tag=obv_active] run function players:items/obv/end_hold_no_item
 execute if score @s holdingObv matches 0 if score @s wasHoldingObv matches 1 if score @s drop_netherite matches 1 if score @s obv_cool matches ..0 run function players:items/obv/shoot_ray
 execute if score @s holdingObv matches 0 if score @s wasHoldingObv matches 1 if score @s drop_netherite matches 1 if score @s obv_cool matches 1.. if entity @s[tag=obv_active] run function players:items/obv/end_hold
-execute if score @s holdingObv matches 0 if score @s wasHoldingObv matches 1 if score @s drop_netherite matches 1 if score @s obv_cool matches 1.. unless entity @s[tag=obv_active] run function players:items/obv/misfire
+execute if score @s[tag=!ob_scythe] holdingObv matches 0 if score @s wasHoldingObv matches 1 if score @s drop_netherite matches 1 if score @s obv_cool matches 1.. unless entity @s[tag=obv_active] run function players:items/obv/misfire
 
 execute if score @s holdingObv matches 0 if score @s wasHoldingObv matches 1 unless score @s drop_netherite matches 1 unless entity @s[tag=obv_active] run title @s actionbar " "
 execute if score @s holdingObv matches 1 run function players:items/obv/actionbar
@@ -168,13 +240,15 @@ execute unless entity @s[tag=obv_active] run scoreboard players remove @s obv_co
 
 execute if score #5T timer matches 0 run function players:misc/portal/standcheck
 
+
 #==================#
 # Ascendance Stuff #
 #==================#
 
 scoreboard players operation @s wasHoldingAsc = @s holdingAsc
 scoreboard players reset @s holdingAsc
-execute store result score @s holdingAsc if predicate players:holding/asc
+execute store result score @s[tag=!disabled] holdingAsc if predicate players:holding/asc
+execute as @s[tag=disabled] run scoreboard players set @s wasHoldingAsc 0
 scoreboard players remove @s asc_cool 1
 
 execute if score @s holdingAsc matches 1 if score @s wasHoldingAsc matches 0 run scoreboard players set @s maxAscCooldown 400
@@ -185,18 +259,21 @@ execute if score @s holdingAsc matches 0 if score @s wasHoldingAsc matches 1 if 
 
 execute if score @s holdingAsc matches 1 if score @s asc_cool matches 0.. run function players:items/asc/actionbar
 
+execute as @s[tag=asc_cd] if predicate players:holding/empty run function players:items/asc/misfire
+
 #====================#
 # Malevolentia Stuff #
 #====================#
 
-execute store result score @s holdingMal if predicate players:holding/male
+execute store result score @s[tag=!disabled] holdingMal if predicate players:holding/male
 execute if score @s holdingMal matches 1 if score @s wasHoldingMal matches 0 run scoreboard players set @s maxMalCooldown 400
 execute if score @s holdingMal matches 1 if score @s wasHoldingMal matches 0 if predicate players:holding/cooldown_ench run scoreboard players set @s maxMalCooldown 300
+execute as @s[tag=disabled] run scoreboard players set @s wasHoldingMal 0
 
-execute if score @s holdingMal matches 1 unless score @s mal_cool2 matches 1.. if score @s mal_cool matches 1.. run function players:items/mal/cooldown
-execute if score @s holdingMal matches 1 unless score @s mal_cool matches 1.. unless score @s mal_cool2 matches 1.. run function players:items/mal/main
-execute if score @s holdingMal matches 1 if score @s mal_cool2 matches 1.. run function players:items/mal/active
-execute if score @s holdingMal matches 0 if score @s wasHoldingMal matches 1 run function players:items/mal/nothold
+execute if score @s holdingMal matches 1 unless score @s[tag=!disabled] mal_cool2 matches 1.. if score @s mal_cool matches 1.. run function players:items/mal/cooldown
+execute if score @s holdingMal matches 1 unless score @s[tag=!disabled] mal_cool matches 1.. unless score @s mal_cool2 matches 1.. run function players:items/mal/main
+execute if score @s holdingMal matches 1 if score @s[tag=!disabled] mal_cool2 matches 1.. run function players:items/mal/active
+execute if score @s holdingMal matches 0 if score @s[tag=!disabled] wasHoldingMal matches 1 run function players:items/mal/nothold
 
 execute unless score @s mal_cool2 matches 1.. run scoreboard players remove @s mal_cool 1
 execute unless entity @s[tag=notick_mal] run scoreboard players remove @s mal_cool2 1
@@ -212,7 +289,9 @@ execute if predicate players:nether unless entity @s[tag=dead] run function play
 # Syzygy Stuff #
 #==============#
 
-execute store success score @s holdingSy if predicate players:holding/syzygy
+execute store success score @s[tag=!disabled] holdingSy if predicate players:holding/syzygy
+execute as @s[tag=disabled] run scoreboard players set @s wasHoldingSy 0
+
 execute if score @s holdingSy matches 1 if score @s wasHoldingSy matches 0 run scoreboard players set @s maxSzyCooldown 400
 execute if score @s holdingSy matches 1 if score @s wasHoldingSy matches 0 if predicate players:holding/cooldown_ench run scoreboard players set @s maxSzyCooldown 300
 
@@ -241,9 +320,12 @@ scoreboard players operation @s wasHoldingSy = @s holdingSy
 scoreboard players remove @s fzy_cool 1
 scoreboard players operation @s wasHoldingFzy = @s holdingFzy
 scoreboard players reset @s holdingFzy
-execute store success score @s holdingFzy if predicate players:holding/frenzy
-execute if score @s holdingFzy matches 1 if score @s wasHoldingFzy matches 0 run scoreboard players set @s maxFzyCooldown 1200
-execute if score @s holdingFzy matches 1 if score @s wasHoldingFzy matches 0 if predicate players:holding/cooldown_ench run scoreboard players set @s maxFzyCooldown 900
+execute store success score @s[tag=!disabled] holdingFzy if predicate players:holding/frenzy
+execute as @s[tag=disabled] run scoreboard players set @s wasHoldingFzy 0
+execute if score @s holdingFzy matches 1 if score @s wasHoldingFzy matches 0 unless predicate players:holding/frenzy2 run scoreboard players set @s maxFzyCooldown 1200
+execute if score @s holdingFzy matches 1 if score @s wasHoldingFzy matches 0 if predicate players:holding/frenzy2 run scoreboard players set @s maxFzyCooldown 600
+execute if score @s holdingFzy matches 1 if score @s wasHoldingFzy matches 0 if predicate players:holding/cooldown_ench unless predicate players:holding/frenzy2 run scoreboard players set @s maxFzyCooldown 900
+execute if score @s holdingFzy matches 1 if score @s wasHoldingFzy matches 0 if predicate players:holding/cooldown_ench if predicate players:holding/frenzy2 run scoreboard players set @s maxFzyCooldown 450
 
 execute if score @s holdingFzy matches 0 if score @s wasHoldingFzy matches 1 if entity @s[tag=rampage] run function players:items/frenzy/end_rampage
 execute if score @s holdingFzy matches 1 run function players:items/frenzy/main
@@ -254,7 +336,13 @@ execute if score @s holdingFzy matches 1 run function players:items/frenzy/main
 
 scoreboard players operation @s wasHoldingCal = @s holdingCal
 scoreboard players reset @s holdingCal
-execute store success score @s holdingCal if predicate players:holding/calamity
+execute as @s[tag=!cal2] if predicate players:holding/calamity2 run tag @s add cal2
+execute as @s[tag=cal_spike] at @s run summon area_effect_cloud ~ ~ ~ {Tags:["cal_spike"],Duration:400}
+execute as @s[tag=cal_spike2] if predicate entities:on_ground run tag @s remove cal_spike
+execute as @s[tag=cal_spike2] if predicate entities:on_ground run tag @s remove cal_spike2
+execute if score @s[tag=cal2] wasHoldingCal matches 1 if score @s drop_netherite matches 1 run function players:items/cal/misfire
+execute store success score @s[tag=!disabled] holdingCal if predicate players:holding/calamity
+execute as @s[tag=disabled] run scoreboard players set @s wasHoldingCal 0
 execute if score @s holdingCal matches 1 if score @s wasHoldingCal matches 0 run scoreboard players set @s maxCalCooldown 800
 execute if score @s holdingCal matches 1 if score @s wasHoldingCal matches 0 if predicate players:holding/cooldown_ench run scoreboard players set @s maxCalCooldown 600
 
@@ -288,21 +376,15 @@ execute as @s[predicate=core:credits_box] run scoreboard players enable @s final
 
 #
 
-scoreboard players operation @s wasHoldingVtear = @s holdingVtear
-scoreboard players reset @s holdingVtear
-execute store result score @s holdingVtear if predicate players:holding/voidtear
-
-execute unless score @s holdingVtear matches 1 run scoreboard players reset @s vtear_cool
-execute if score @s holdingVtear matches 1 unless score @s wasHoldingVtear matches 1 run scoreboard players set @s vtear_cool 1
-execute unless score @s holdingVtear matches 1 if score @s wasHoldingVtear matches 1 run effect clear @s invisibility
-execute if score @s vtear_cool matches 1.. run function players:items/vt/main
 
 
-
+execute as @s if predicate players:holding/whispersong_offhand run function players:items/whispersong/main
 execute as @s if predicate players:holding/whispersong run function players:items/whispersong/main
-execute as @s[tag=holdingWS] unless predicate players:holding/whispersong run function players:items/whispersong/end
+execute as @s[tag=holdingWS] unless predicate players:holding/whispersong unless predicate players:holding/whispersong_offhand run function players:items/whispersong/end
 
-execute if predicate players:holding/anyrs run function players:items/anyr
+
+execute if predicate players:holding/anyrs run function players:items/anyr/main
+execute as @s[tag=anyr_active] positioned ~ ~1 ~ run function players:items/anyr/active
 
 execute if predicate players:holding/flammer run function players:items/flammer/main
 scoreboard players reset @s flammer_break
@@ -320,7 +402,7 @@ execute if score #5T timer matches 1 if entity @s[tag=settings.assist] run effec
 scoreboard players add @s pris_cool 1
 
 scoreboard players remove @s hate.timer 1
-execute if score #5T timer matches 0 if score @s hate.timer matches ..0 if predicate players:locations/lodahr_noportal run advancement grant @s only advancements:discoveries/lodahr
+execute if score #5T timer matches 0 if score @s hate.timer matches ..0 if predicate players:locations/lodahr_noportal as @s run function players:locations/visit_lodahr
 
 execute if score @s khive_pcool matches ..1 positioned ~-3 ~-3 ~-3 as @e[type=marker,tag=kring,dx=5,dy=5,dz=5] at @s run function entities:misc/kring/tick
 
@@ -335,12 +417,12 @@ execute store result score @s holdingMb if predicate players:holding/mb
 execute if score @s holdingMb matches 1 if score @s wasHoldingMb matches 0 run scoreboard players set @s maxMbCooldown 1200
 execute if score @s holdingMb matches 1 if score @s wasHoldingMb matches 0 if predicate players:holding/cooldown_ench run scoreboard players set @s maxMbCooldown 900
 
-execute if score @s wasHoldingMb matches 1 if score @s holdingMb matches 0 if score @s mb_charge matches 1.. run function players:items/mb/reset
+execute if score @s wasHoldingMb matches 1 if score @s holdingMb matches 0 if score @s[tag=!disabled] mb_charge matches 1.. run function players:items/mb/reset
 execute if score @s mb_charge matches 1.. if score @s mb_charge_cool matches ..0 run scoreboard players remove @s mb_charge 2
-execute if score @s mb_charge matches 0 run function players:items/mb/reset
+execute if score @s[tag=!disabled] mb_charge matches 0 run function players:items/mb/reset
 
-execute if score @s holdingMb matches 1 if score @s mb_cool matches ..0 run function players:items/mb/main
-execute if score @s holdingMb matches 1 if score @s mb_cool matches 1.. run function players:items/mb/actionbar
+execute if score @s holdingMb matches 1 if score @s[tag=!disabled] mb_cool matches ..0 run function players:items/mb/main
+execute if score @s holdingMb matches 1 if score @s[tag=!disabled] mb_cool matches 1.. run function players:items/mb/actionbar
 
 scoreboard players remove @s mb_cool 1
 
@@ -441,7 +523,7 @@ execute if score @s dialogueOption matches 1.. run function dialogue:option
 #================#
 scoreboard players operation @s wasHoldingOsteo = @s holdingOsteo
 scoreboard players reset @s holdingOsteo
-execute store success score @s holdingOsteo if predicate players:holding/osteo 
+execute store success score @s holdingOsteo if predicate players:holding/osteo
 
 execute if entity @s[scores={osteodamage=30..,holdingOsteo=1}] run function players:items/osteo2/tickup
 execute if entity @s[scores={osteo_anim=0..}] run function players:items/osteo2/anim
@@ -460,10 +542,17 @@ execute if entity @s[tag=has_radar] run function players:items/pradar/zones
 #================#
 
 
-execute if score #1S timer matches 0 at @s[x=-2777,y=15,z=2171,dx=56,dz=-46,dy=6] run playsound minecraft:dcustom.ui.button.click master @s[x=-2777,y=15,z=2171,dx=56,dz=-46,dy=6] ~ ~ ~ 0.25 2
-execute as @s if predicate players:in_watertoggle if score #electrowater y matches 1 if score #5T timer matches 0 run damage @s 3 minecraft:rubber
-execute as @s if predicate players:in_waterelectro unless predicate players:in_watersafe if score #electrowater x matches 1 at @s if block ~ ~ ~ water if score #5T timer matches 0 run damage @s 3 minecraft:rubber
+execute if score #1S timer matches 0 at @s[x=-2777,y=15,z=2171,dx=56,dz=-46,dy=6] run playsound minecraft:dcustom.ui.button.click block @s[x=-2777,y=15,z=2171,dx=56,dz=-46,dy=6] ~ ~ ~ 0.25 2
+execute as @s if predicate players:in_watertoggle if score #electrowater y matches 1 if score #5T timer matches 0 unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 3 minecraft:rubber
+execute as @s if predicate players:in_watertoggle if score #electrowater y matches 1 if score #5T timer matches 0 if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute as @s if predicate players:in_waterelectro unless predicate players:in_watersafe if score #electrowater x matches 1 at @s if block ~ ~ ~ water if score #5T timer matches 0 unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 3 minecraft:rubber
+execute as @s if predicate players:in_waterelectro unless predicate players:in_watersafe if score #electrowater x matches 1 at @s if block ~ ~ ~ water if score #5T timer matches 0 if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
 
+#================#
+# Azoth #
+#================#
+
+execute if predicate players:in_azoth run damage @s 8 minecraft:azoth
 
 #================#
 # Orbit Puzzle   #
@@ -517,8 +606,7 @@ execute if score #1S timer matches 0 if predicate players:locations/starrise run
 
 execute if score #1S timer matches 0 if entity @s[predicate=players:lodahr,x=-69,z=-1614,distance=..225] run advancement grant @s only advancements:discoveries/ytaj
 
-execute if score #10T timer matches 0 if predicate players:locations/resonant_halls_water run effect give @s blindness 10 1 true
-
+execute if score #1S timer matches 1 if predicate players:locations/resonant_halls_water run effect give @s slowness 1 3 true
 
 execute positioned 1249.51 52.55 1200.96 as @s[dy=3,dz=3,dx=3] run function core:scene/aeongale/lastdoor/1
 
@@ -534,6 +622,348 @@ execute if score @s HurtTime matches 1.. run scoreboard players remove @s HurtTi
 scoreboard players reset @s drop_netherite
 scoreboard players reset @s drop_zenith
 
-execute as @a[predicate=players:holding/shield] if score @s shield_cool matches 0.. run function dlc:shield/actionbar
-execute as @a[predicate=players:holding/shield_offhand] if score @s shield_cool matches 0.. run function dlc:shield/actionbar
+execute as @s[predicate=players:holding/shield] if score @s[tag=!disabled] shield_cool matches 0.. run function dlc:shield/actionbar
+execute as @s[predicate=players:holding/shield_offhand] if score @s[tag=!disabled] shield_cool matches 0.. run function dlc:shield/actionbar
 scoreboard players remove @s shield_cool 1
+
+
+
+# Voidtear
+
+
+execute as @s if score @s timer matches 1..99 run scoreboard players set @s vtear_cool 2147483647
+
+execute as @s[scores={vtear_cool2=1..9}] run scoreboard players add @s vtear_cool2 1
+execute as @s[scores={vtear_cool2=10..}] run scoreboard players reset @s vtear_cool2
+
+
+scoreboard players operation @s wasHoldingVT = @s holdingVT
+scoreboard players operation @s wasHoldingVtear = @s wasHoldingVtear2
+scoreboard players reset @s holdingVT
+scoreboard players reset @s wasHoldingVtear2
+execute store success score @s holdingVT if predicate players:holding/voidtear
+execute store success score @s wasHoldingVtear2 if predicate players:holding/voidtear_offhand
+
+execute if score @s wasHoldingVT matches 1 if score @s drop_voidtear matches 1 if score #voidtear int matches 16.. run function players:items/vt/throw_invalid
+
+execute if score @s wasHoldingVT matches 1 if score @s drop_voidtear matches 1 if score @s vtear_cool2 matches 1.. unless score #voidtear int matches 16.. run function players:items/vt/misfire
+
+execute if score @s wasHoldingVT matches 1 if score @s drop_voidtear matches 1 unless score @s vtear_cool2 matches 1.. unless score #voidtear int matches 16.. run function players:items/vt/throw
+
+execute store success score @s HoldingVT if predicate players:holding/voidtear
+execute if score @s HoldingVT matches 1.. run function players:items/vt/main
+
+execute as @s[predicate=players:holding/voidtear_offhand] run function players:items/vt/main
+
+scoreboard players reset @s drop_voidtear
+
+execute unless score @s[predicate=!players:holding/voidtear_offhand,tag=!timed,scores={vtear_cool=..2147483647}] HoldingVT matches 1 run scoreboard players reset @s vtear_cool
+execute if score @s[predicate=!players:holding/voidtear_offhand,tag=!timed,scores={vtear_cool=..2147483647}] HoldingVT matches 1 unless score @s wasHoldingVT matches 1 unless score @s wasHoldingVtear matches 1 run scoreboard players set @s[scores={vtear_cool=..2147483647}] vtear_cool 1
+execute unless score @s[predicate=!players:holding/voidtear_offhand,tag=!timed] HoldingVT matches 1 if score @s wasHoldingVT matches 1 run effect clear @s invisibility
+
+
+
+execute as @s[tag=voided,tag=!trans] if score @s timer matches 100.. at @e[tag=dagger] run particle flash ~ ~ ~ 0 0 0 1 5 force
+execute as @s[tag=voided,tag=!trans] if score @s timer matches 100.. at @e[tag=dagger] run particle minecraft:firework ~ ~ ~ 0 25 0 0 200 force
+execute as @s[tag=voided,tag=!trans] if score @s timer matches 100.. at @e[tag=dagger] run playsound minecraft:dcustom.block.bell.use player @s ~ ~ ~ 1 2
+execute as @s[tag=voided] if score #5S timer matches 80 at @e[tag=dagger,scores={num=400..}] run particle minecraft:firework ~ ~ ~ 0 100 0 0 200 force
+execute as @s[tag=voided,tag=!trans] if score @s timer matches 100.. at @s run particle minecraft:smoke ~ ~1 ~ 0.25 0.9 0.25 0.05 50 normal @a
+execute as @s[tag=voided,tag=!trans] if score @s timer matches 100.. run effect clear @s invisibility
+
+
+execute as @s[tag=voided,tag=!trans] if score @s timer matches 100.. run tag @s remove reset_cd
+execute as @s[tag=voided,tag=!trans] if score @s timer matches 100.. run tag @s remove timed
+execute as @s[tag=voided,tag=!trans] if score @s timer matches 100.. run tag @s add trans
+
+
+execute as @s unless predicate players:invisibilty run tag @s remove reset_cd
+
+execute as @s[tag=timed] run scoreboard players add @s timer 1
+
+# execute at @s if predicate core:in_ebonrun run effect give @s mining_fatigue 1 0 true
+
+
+
+# Axe of Growth
+# execute if predicate players:holding/axe_growth1 if score #daycount timer matches 1.. if score #1S timer matches 0 run function players:items/axe_growth/1
+# execute if predicate players:holding/axe_growth2 if score #daycount timer matches 2.. if score #1S timer matches 0 run function players:items/axe_growth/2
+# execute if predicate players:holding/axe_growth3 if score #daycount timer matches 3.. if score #1S timer matches 0 run function players:items/axe_growth/3
+# execute if predicate players:holding/axe_growth4 if score #daycount timer matches 4.. if score #1S timer matches 0 run function players:items/axe_growth/4
+# execute if predicate players:holding/axe_growth5 if score #daycount timer matches 5.. if score #1S timer matches 0 run function players:items/axe_growth/5
+# execute if predicate players:holding/axe_growth6 if score #daycount timer matches 6.. if score #1S timer matches 0 run function players:items/axe_growth/6
+# execute if predicate players:holding/axe_growth7 if score #daycount timer matches 7.. if score #1S timer matches 0 run function players:items/axe_growth/7
+# execute if predicate players:holding/axe_growth8 if score #daycount timer matches 8.. if score #1S timer matches 0 run function players:items/axe_growth/8
+# execute if predicate players:holding/axe_growth9 if score #daycount timer matches 9.. if score #1S timer matches 0 run function players:items/axe_growth/9
+# execute if predicate players:holding/axe_growth10 if score #daycount timer matches 10.. if score #1S timer matches 0 run function players:items/axe_growth/10
+# execute if predicate players:holding/axe_growth11 if score #daycount timer matches 11.. if score #1S timer matches 0 run function players:items/axe_growth/11
+# execute if predicate players:holding/axe_growth12 if score #daycount timer matches 12.. if score #1S timer matches 0 run function players:items/axe_growth/12
+# execute if predicate players:holding/axe_growth13 if score #daycount timer matches 13.. if score #1S timer matches 0 run function players:items/axe_growth/13
+# execute if predicate players:holding/axe_growth14 if score #daycount timer matches 14.. if score #1S timer matches 0 run function players:items/axe_growth/14
+# execute if predicate players:holding/axe_growth15 if score #daycount timer matches 15.. if score #1S timer matches 0 run function players:items/axe_growth/15
+# execute if predicate players:holding/axe_growth16 if score #daycount timer matches 16.. if score #1S timer matches 0 run function players:items/axe_growth/16
+# execute if predicate players:holding/axe_growth17 if score #daycount timer matches 17.. if score #1S timer matches 0 run function players:items/axe_growth/17
+# execute if predicate players:holding/axe_growth18 if score #daycount timer matches 18.. if score #1S timer matches 0 run function players:items/axe_growth/18
+# execute if predicate players:holding/axe_growth19 if score #daycount timer matches 19.. if score #1S timer matches 0 run function players:items/axe_growth/19
+# execute if predicate players:holding/axe_growth20 if score #daycount timer matches 20.. if score #1S timer matches 0 run function players:items/axe_growth/20
+
+
+
+# Misc 
+
+execute if predicate players:holding/nail if score @s usedNail matches 1.. run function players:items/nail/hit
+
+# execute at @s[scores={usedIronP=..1}] if predicate core:in_ebonrun run function players:locations/ebonrun
+# execute at @s[scores={usedDiamondP=..1}] if predicate core:in_ebonrun run function players:locations/ebonrun
+# execute at @s[scores={usedNetheriteP=..1}] if predicate core:in_ebonrun run function players:locations/ebonrun
+
+execute as @s[predicate=players:adventure_areas] if predicate players:frost_walker run function players:disable_frost_walker
+
+execute as @s[predicate=!players:adventure_areas,tag=disable_frost_walker] run function players:enable_frost_walker
+
+execute unless predicate players:locations/in_arena run tag @s remove initialloop
+
+execute as @s[predicate=players:locations/red_dawn_spawn1,tag=!red_dawn_spawn1] run function dlc:spawn/red_dawn_spawn1
+
+execute as @s[predicate=players:locations/red_dawn_spawn2,tag=!red_dawn_spawn2] run function dlc:spawn/red_dawn_spawn2
+
+execute as @s[predicate=players:locations/red_dawn_spawn3,tag=!red_dawn_spawn3] run function dlc:spawn/red_dawn_spawn3
+
+execute as @s[predicate=players:locations/red_dawn_spawn4,tag=!red_dawn_spawn4] run function dlc:spawn/red_dawn_spawn4
+
+execute if predicate players:locations/red_dawn_nomusic run function players:music/stopfurtherance
+
+execute unless predicate players:locations/red_dawn_nomusic if entity @s[tag=bossmusic] run function players:music/startfurtherance
+
+execute as @s[predicate=players:holding/catfisher] unless score @s catch_old >= @s catch run function dlc:fishing/temp_catch
+
+#function dlc:accessories/main
+
+
+execute as @s[scores={dlc=1}] run function dlc:triggerdlc
+execute as @s[scores={sex=1}] run function dlc:triggersex
+
+
+# ===================================================================
+#               PLAYER-CENTRIC COMMANDS 
+# ===================================================================
+
+### Harvest's Hope ###
+execute if predicate players:holding/soul_scythe if score @s use_soul matches 1.. run function players:items/soul/use
+
+### Pleasures of War ###
+execute if predicate players:holding/soul_scythe if score @s use_soul matches 1.. run function players:items/soul/use
+
+
+### Night Watch ###
+execute if predicate players:holding/backstabber_mainhand if score @s use_bs matches 1.. run function players:items/backstabber/main
+execute if predicate players:holding/backstabber_mainhand unless predicate players:invisibilty run scoreboard players add @s bstimer 1
+execute if predicate players:holding/backstabber_mainhand if score @s bstimer matches 100.. run function players:items/backstabber/resetreach
+
+execute if predicate players:holding/backstabber_offhand if score @s use_bs matches 1.. run function players:items/backstabber/main
+execute if predicate players:holding/backstabber_offhand unless predicate players:invisibilty run scoreboard players add @s bstimer 1
+execute if predicate players:holding/backstabber_offhand if score @s bstimer matches 100.. run function players:items/backstabber/resetreach
+
+execute if predicate players:holding/backstabber_mainhand if predicate players:sneak if predicate players:invisibilty run function players:items/backstabber/invis
+execute if predicate players:holding/backstabber_mainhand if predicate players:holding/backstabber_offhand if predicate players:sneak if predicate players:invisibilty run function players:items/backstabber/dual
+
+execute unless predicate players:holding/backstabber_offhand unless predicate players:holding/backstabber_mainhand unless predicate players:holding/leviathan if score @s bskills matches 1.. run function players:items/backstabber/resetreach
+execute unless predicate players:holding/backstabber_mainhand if score @s kills matches 1.. run scoreboard players reset @s kills
+execute unless predicate players:holding/backstabber_offhand if score @s kills matches 1.. run scoreboard players reset @s kills
+
+# -------------------------------------------------------------------
+
+### Verdant ###
+
+execute as @s[tag=temp_shooter] at @s positioned ~ ~1 ~ run tag @e[type=#arrows,sort=nearest,limit=1,distance=..3,tag=!arrow.inground,tag=!verdant] add verdant
+execute as @s[tag=temp_shooter] at @s positioned ~ ~1 ~ if entity @e[type=spectral_arrow,sort=nearest,limit=1,distance=..3,tag=!arrow.inground] run scoreboard players set #spectral2 bool 1
+
+
+### Leviathan ###
+
+scoreboard players operation @s wasHoldingLevi = @s holdingLevi
+scoreboard players reset @s holdingLevi
+execute store success score @s holdingLevi if predicate players:holding/leviathan
+execute if score @s wasHoldingLevi matches 1 if score @s drop_levi matches 1 run function players:items/levi/misfire
+
+execute store success score @s HoldingLevi if predicate players:holding/leviathan
+
+execute if predicate players:holding/leviathan if score @s levi_reach matches 1.. as @s[tag=!strengthened] run function players:items/levi/weaken
+execute if predicate players:holding/leviathan if score @s use_levi matches 1.. run function players:items/levi/main
+execute if predicate players:holding/leviathan run scoreboard players add @s levi_reach 1
+execute if predicate players:holding/leviathan run function players:items/levi/holding
+#execute if predicate players:holding/leviathan if predicate players:sweeping run item modify entity @s weapon.mainhand players:remove_sweeping_edge
+
+execute if predicate players:holding/leviathan if score @s levi_reach matches 140.. run scale set pehkui:entity_reach 1 @s
+#execute if predicate players:holding/leviathan if score @s levi_reach matches 140.. run scale set pehkui:defense 0.5 @s
+execute if predicate players:holding/leviathan if score @s levi_reach matches 140.. run tag @s remove strengthened
+
+execute if predicate players:holding/leviathan if score @s levi_kills matches 5.. unless score @s levi_cool matches 1.. if score @s drop_levi matches 1 run function players:items/levi/apotheosis
+
+execute unless predicate players:holding/leviathan if score @s levi_reach matches 1.. run scale set pehkui:entity_reach 1 @s
+execute unless predicate players:holding/leviathan if score @s levi_reach matches 1.. run scoreboard players reset @s levi_reach
+execute unless predicate players:holding/leviathan if entity @s[tag=strengthened] run tag @s remove strengthened
+execute unless predicate players:holding/leviathan if score @s levi_cool matches 1.. run function players:items/levi/cooldown
+
+scoreboard players reset @s drop_levi
+
+# -------------------------------------------------------------------
+
+### Force Majeure ###
+execute if predicate players:holding/force run function players:items/force/main
+execute unless predicate players:holding/force if score @s thun matches 1.. run scoreboard players reset @s thun
+
+# -------------------------------------------------------------------
+
+### Gauntlets ###
+execute if predicate players:holding/gauntlets run function players:items/gauntlets/main
+execute unless predicate players:holding/gauntlets as @s[scores={gaunt_stats=1..}] run function players:items/gauntlets/reset
+
+# -------------------------------------------------------------------
+
+### First End ###
+
+execute if predicate players:holding/first_end as @s[scores={use_first=1..}] run function players:items/first_end/main
+
+# -------------------------------------------------------------------
+
+### Unchecked Ambition ###
+
+execute if predicate players:holding/ambition run function players:items/ambition/hold
+# -------------------------------------------------------------------
+
+### Reticent Resolve ###
+
+execute if predicate players:holding/reticent as @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute as @s[scores={blocked=1..}] run scoreboard players reset @s blocked
+execute as @s[scores={blocked=1..,blocking3=5..}] unless predicate players:holding/reticent run scoreboard players reset @s blocked
+execute as @a[scores={blocking3=2..}] unless predicate players:is_blocking run scoreboard players reset @s blocking3
+execute if predicate players:holding/reticent as @e[tag=parried] run function players:items/reticent/parry
+
+# -------------------------------------------------------------------
+
+### Hexed King ###
+
+execute if predicate players:holding/hexed as @s[scores={hex=1..}] as @e[tag=!hexed,predicate=!entities:invul,type=!#entities:dummy,type=!#entities:tickless_passive,type=!#entities:highcapacity,type=!#entities:proj,tag=!oblivion_immune,tag=!obv.immune,distance=..8,nbt={HurtTime:10s}] run function players:items/hexed/loop
+execute if predicate players:holding/hexed as @s[scores={hex=1..}] run scoreboard players reset @s hex
+
+# -------------------------------------------------------------------
+
+### Serendipity ###
+function core:rng
+scoreboard players operation #rand temp %= #4 const
+execute if predicate players:holding/serendipity as @s[scores={lucky=1..}] as @e[tag=!mythic_pvp,type=!#core:oblivion_immune,distance=..8,nbt={HurtTime:10s}] if score #rand temp matches 1 run function players:items/serendipity/damage
+execute if predicate players:holding/serendipity as @s[scores={lucky=1..}] run scoreboard players reset @s lucky
+
+# -------------------------------------------------------------------
+
+### Hangyaku ###
+function core:rng
+scoreboard players operation #rand temp %= #2 const
+execute as @s[scores={use_shad=1..}] if predicate players:holding/hangyaku if score #rand temp matches 1 as @e[tag=!mythic_pvp,type=!#core:oblivion_immune,distance=..8,nbt={HurtTime:10s}] run function players:items/hangyaku/use
+execute as @s[scores={use_shad=1..}] if predicate players:holding/hangyaku run scoreboard players reset @s use_shad
+
+# -------------------------------------------------------------------
+
+### Warring States ###
+
+execute as @s[scores={war=1..}] if predicate players:holding/warring as @e[tag=!mythic_pvp,type=!#core:oblivion_immune,distance=..8,nbt={HurtTime:10s}] run function players:items/warring/use
+
+# -------------------------------------------------------------------
+
+# --- Cloud in a Bottle ---
+execute if score #1S timer matches 0 run function players:cloud
+execute if entity @s[tag=cloud] run function players:checkcloud
+
+# --- Wings ---
+execute as @s[advancements={weapons:wings=true}] if score #1S timer matches 0 run function players:wings
+execute if entity @s[tag=wings] run function players:checkwings
+# -------------------------------------------------------------------
+
+### Waystones & Pocket Wormhole ###
+
+# Pocket Wormhole
+execute if predicate players:hold_pocket run function players:pocket
+execute if entity @s[tag=temp_waystone] unless predicate players:hold_pocket unless predicate players:hold_waystone run tag @s remove temp_waystone
+
+# Waystone 
+execute if predicate players:hold_waystone run function players:waystone
+
+# -------------------------------------------------------------------
+
+# --- Oblivion Puzzle ---
+execute unless score #ob_finish bool matches 2 as @a at @s if predicate players:locations/oblivion run function dlc:ob_upgrade/puzzle_main
+
+
+# --- Frenzy Upgrade ---
+execute at @s if predicate players:locations/sahd_forge as @e[predicate=players:is_fateful] at @s if block ~ ~-4 ~ lava run function dlc:frenzy_upgrade/initial
+
+# --- B52 ---
+execute if predicate players:holding/b52 if predicate players:broke_ore run function players:items/b52/broke_block
+
+# waterspiked crab
+execute as @s[tag=waterspiked] run function entities:ai/waterspiked/bleed
+
+# mythic abilities disabler
+execute as @s[tag=disabled] run function players:misc/disabled
+
+# mb run mastermode
+execute as @s[tag=suffering] run function players:misc/suffer
+
+# generals music
+execute as @s[tag=generals_music,tag=!finished] if predicate players:in_generals_arena unless score @s playingMusic matches 1.. at @s run function players:music/generals
+execute as @s[tag=generals_music] unless predicate players:in_generals_arena run tag @s remove generals_music
+execute if score #1S timer matches 0 if predicate players:in_generals_arena run effect clear @s fire_resistance
+
+# zul spawning
+execute at @s if score #5T timer matches 3 run function dlc:zul/check_spawn
+
+# Ace
+execute if predicate players:holding/ace run function players:items/ace/main
+execute as @s[tag=ace] unless predicate players:holding/ace run function players:items/ace/main_2
+
+# oblivion 2 voidrecall preventing drops
+scoreboard players operation @s wasHoldingOb = @s holdingob
+scoreboard players reset @s holdingob
+execute store success score @s[tag=!disabled] holdingob if predicate players:holding/voidrecall
+execute if score @s wasHoldingOb matches 1 if score @s drop_ob matches 1 run function players:items/obv/misfire3
+scoreboard players reset @s drop_ob
+
+# moments peace
+execute as @s[scores={moment=1..}] run function players:items/moment/use
+
+# zul spawning
+execute if score #10S timer matches 50 unless entity @e[type=dlc:collector] run tag @s remove zul_spawn
+
+execute if predicate dlc:strength run effect give @s strength infinite 0 true
+execute if predicate dlc:jump_boost run effect give @s jump_boost infinite 0 true
+execute if predicate dlc:fire_resistance run effect give @s fire_resistance infinite 0 true
+execute if predicate dlc:speed run effect give @s speed infinite 0 true
+
+
+execute as @s[tag=primal_dead] run function dlc:primal_journey/spectate
+
+execute as @s[predicate=players:in_primal_journey] unless score @s playingMusic matches 1.. run stopsound @s music
+
+# weaver needle
+execute as @s[scores={weaver=1..}] run function players:items/weaver/use
+
+# lunar sunscreen
+execute as @s[scores={lunar=1..}] run function players:items/lunar/use
+execute as @s[tag=lunar] run function players:items/lunar/main
+
+# fervor gummies
+execute as @s[scores={gummy=1..},tag=!gummy] run function players:items/gummy/use
+execute as @s[tag=gummy] run function players:items/gummy/main
+execute as @s[tag=dash2] run function players:items/gummy/worry_timer
+execute as @s[tag=worry2] run function players:items/gummy/worry_timer2
+execute as @s[tag=luxury] run function players:items/gummy/luxury_timer
+
+# runic hoard
+execute as @s[scores={runic=1..}] run function players:items/runic_hoard/use
+
+# 👁️‍🗨️
+execute as @s[scores={what=1..}] run function dlc:misc/what
+execute as @s[tag=chronicler_meeting] run stopsound @s
+
+# misc 
+# execute as @s[tag=qst4] unless score #caseyquest bool matches 1 at @s if block -2726 66 -1796 air run scoreboard players set #caseyquest bool 1

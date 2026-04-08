@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Daybreak:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/daybreak"
+        
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "mcdw:gauntlet_soul_fists"
+        },
+        "title": {
+            "color": "red",
+            "text": "Daybreak"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained the Daybreak gauntlet, protector of life."
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:duskfall"
+}

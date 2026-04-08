@@ -13,3 +13,22 @@ execute if entity @s[tag=zombee] run function entities:ai/zombee/main
 execute if entity @s[tag=yav_remnant] run function entities:ai/yav/rem/main
 execute if entity @s[tag=tether] run function entities:ai/sentry/tether_main
 execute if entity @s[tag=chained_samurai] run function entities:ai/samurai/main
+execute if entity @s[tag=avbot] run function entities:ai/avbot/main
+execute if entity @s[tag=avbot_boom] run function entities:ai/avbot_boom/main
+execute if entity @s[tag=avbot_zoomy] run function entities:ai/avbot_zoom/main
+execute if entity @s[tag=buffer] run function entities:ai/buffer/main
+execute if entity @s[tag=disabler] run function entities:ai/disabler/main
+execute if entity @s[tag=mb_run_blind] run function entities:ai/khive_zombie/blind
+
+execute if entity @s[tag=drift_bone] run function entities:ai/driftbone/main
+execute if entity @s[tag=timeworn_thrall] run function entities:ai/timeworn/main
+execute if entity @s[tag=timeworn_executioner] run function dlc:mobs/timeworn_executioner/tick
+execute if entity @s[tag=timeworn_harbinger] run function dlc:mobs/timeworn_harbinger/tick
+
+
+execute if entity @s[tag=primal_fury] at @s if entity @a[distance=..24] run function dlc:mobs/primal_fury/tick
+execute if entity @s[tag=primal_yearning] at @s if entity @a[distance=..24] run function dlc:mobs/primal_yearning/tick
+execute if entity @s[tag=primal_yearning_child] run function dlc:mobs/primal_yearning/child/tick
+execute if entity @s[tag=primal_aegis] run function dlc:mobs/primal_aegis/tick
+execute if entity @s[tag=primal_stalker] run function dlc:mobs/primal_stalker/tick
+execute if entity @s[tag=primal_excavator] run function dlc:mobs/primal_excavator/tick

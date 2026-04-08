@@ -5,12 +5,15 @@ execute store result score @s uuid2 store result score #temp uuid2 run data get 
 execute store result score @s uuid3 store result score #temp uuid3 run data get storage drehmal:entities tempUuid[3]
 tag @s add owner_tagged
 scoreboard players reset #ossein_arrow temp
+scoreboard players reset #ethgar_arrow temp
 scoreboard players reset #ground_clear temp
 scoreboard players reset #sun_arrow temp 
 scoreboard players reset #teth_velo? temp
 scoreboard players reset #syzygy_arrow temp
 scoreboard players reset #khive_flunkie? temp
 scoreboard players reset #avgun? temp
+scoreboard players reset #fdry_gun temp
+scoreboard players reset #mal_arrow temp
 scoreboard players reset #pavgun? temp
 scoreboard players reset #skeleton? temp
 scoreboard players reset #mb_shot temp
@@ -18,6 +21,11 @@ scoreboard players reset #rihelma? temp
 scoreboard players reset #bowblade? temp
 scoreboard players reset #com.assault? temp
 scoreboard players reset #ultva temp
+scoreboard players reset #piecemaker_arrow temp
+scoreboard players reset #pleasure_arrow temp
+scoreboard players reset #hunter_arrow temp
+scoreboard players reset #ultva_arrow temp
+
 execute as @e[type=#core:bow_users] if score @s uuid0 = #temp uuid0 if score @s uuid1 = #temp uuid1 if score @s uuid2 = #temp uuid2 if score @s uuid3 = #temp uuid3 run function entities:misc/arrow_data
 execute if score #syzygy_arrow temp matches 1 run function entities:misc/syzygy_power
 execute if score #syzygy_arrow temp matches 2 run function entities:misc/syzygy_power2
@@ -28,7 +36,10 @@ execute if score #com.assault? temp matches 1 run kill @s
 execute unless score #com.assault? temp matches 1 if score #avgun? temp matches 1 run function entities:misc/avgun_shoot
 execute if score #mb_shot temp matches 1 run function entities:misc/mb_shoot
 
+execute if score #mal_arrow temp matches 1 run function entities:misc/fire_bow_shoot
+execute if score #fdry_gun temp matches 1 run function entities:ai/fdry_gunman/shoot
 execute if score #teth_velo? temp matches 1 run function entities:misc/arrow_teth
+execute if score #ethgar_arrow temp matches 1 run function entities:misc/arrow_ethgar
 execute if score #ossein_arrow temp matches 1 run function entities:misc/arrow_ossein
 execute if score #ground_clear temp matches 1 run tag @s add ground_clear
 execute if score #bowblade? temp matches 1 run function entities:misc/bowblade_dmg
@@ -40,3 +51,9 @@ execute if predicate entities:noxious_arrow run tag @s add noxious_arrow
 execute if predicate entities:stun_arrow run function entities:misc/stasis_bolt_init
 
 execute if score #sun_arrow temp matches 1 run kill @s
+
+execute if score #piecemaker_arrow temp matches 1 run function entities:misc/piecemaker_shoot
+execute if score #hunter_arrow temp matches 1 run function dlc:mobs/timeworn_hunter/arrow_stats
+execute if score #ultva_arrow temp matches 1 run function entities:ai/ultva/arrow_stats
+
+execute if score #pleasure_arrow temp matches 1 run function entities:misc/pleasure_shoot

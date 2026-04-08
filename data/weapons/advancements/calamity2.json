@@ -5,11 +5,12 @@
             "color": "gold"
         },
         "description": {
-            "text": "Upgraded Calamity, claws of a vanquished skullbeast",
+            "text": "Imbued Calamity with a piece of the Mother.",
             "color": "gray"
         },
         "icon": {
-            "item": "minecraft:cow_spawn_egg"
+      "item": "minecraft:netherite_sword",
+      "nbt": "{CustomModelData:11}"
         },
         "frame": "task",
         "show_toast": true,

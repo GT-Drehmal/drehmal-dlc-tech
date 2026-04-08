@@ -13,8 +13,10 @@ execute if predicate players:holding/pris_mace run function players:items/click/
 
 execute if predicate players:holding/avhorseremote run function players:avhorse/menu/on_click
 
-execute if predicate players:holding/mb run function players:items/click/mb
+execute if predicate players:holding/mb as @s run function players:items/click/mb
 
 execute if predicate players:holding/party_cannon run scoreboard players set @s pcannon_charge_c 7
+
+execute if predicate players:holding/avrad run scoreboard players set @s avrad_charge_c 7
 
 scoreboard players reset @s click

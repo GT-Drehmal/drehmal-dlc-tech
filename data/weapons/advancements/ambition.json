@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Ambition:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/ambition"
+        
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "simplyswords:diamond_chakram"
+        },
+        "title": {
+            "color": "red",
+            "text": "Unchecked Ambition"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained Unchecked Ambition, a whisper from a lost body."
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:hexed"
+}

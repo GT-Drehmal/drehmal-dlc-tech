@@ -34,19 +34,20 @@
       "minecraft:bow",  
       "minecraft:crossbow",
       "minecraft:netherite_hoe",
-      "additionaladditions:rose_gold_sword",
+      "mythicmetals:runite_sword",
       "mcdw:dagger_backstabber",
       "mcdw:dagger_swift_striker",
       "mcdw:hammer_stormlander",
-      "simplyswords:runic_scythe",  
+      "mcdw:scythe_soul_scythe",  
       "mcdw:sword_frost_slayer",
       "mcdw:sword_sinister",
       "mcdw:bow_shortbow",
-      "mcdw:bow_haunted_bow",
+      "mcdw:bow_love_spell_bow",
       "mcdw:crossbow_harpoon_crossbow",
-      "mythicmetals:celestium_sword",
-      "mythicmetals:orichalcum_axe",
-      "mythicmetals:durasteel_pickaxe"
+      "dlc:b52",
+      "dlc:leviathan",
+      "mcdw:crossbow_cog_crossbow",
+      "mcdw:double_axe_double"
     ]
   }
   

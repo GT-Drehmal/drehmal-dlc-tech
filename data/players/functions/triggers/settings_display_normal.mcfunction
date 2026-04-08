@@ -16,7 +16,7 @@ execute if score #auto_scale? const matches 1 run function players:triggers/sett
 execute unless score #auto_scale? const matches 1 run function players:triggers/settings/disp_scale_n
 
 # mythic pvp - global
-execute unless score #mythic_pvp? const matches 1 run tellraw @s ["",{"text":"Mythic Ability PvP: ","color":"dark_gray"},{"text":"[On] ","color":"white","clickEvent":{"action":"run_command","value":"/trigger Settings set 2"},"hoverEvent":{"action":"show_text","contents":[{"text":"Allows Mythic item abilites to damage other players.","color":"gray"},"\n",{"text":"Click to Enable!","color":"yellow"},"\n",{"text":"[Note: For a normal playthrough, having Mythic PvP on is inadvisable]","color":"red"}]}},{"text":"[Off] ","bold":true,"color":"gold","hoverEvent":{"action":"show_text","contents":[{"text":"Mythic abilities will not damage","color":"gray"},"\n",{"text":"other players.","color":"gray"}]}}]
+execute unless score #mythic_pvp? const matches 1 run tellraw @s ["",{"text":"Mythic Ability PvP: ","color":"dark_gray"},{"text":"[On] ","color":"white","clickEvent":{"action":"run_command","value":"/trigger Settings set 2"},"hoverEvent":{"action":"show_text","contents":[{"text":"Allows Mythic item abilites to damage other players. (Includes DLC weapons)","color":"gray"},"\n",{"text":"Click to Enable!","color":"yellow"},"\n",{"text":"[Note: For a normal playthrough, having Mythic PvP on is inadvisable]","color":"red"}]}},{"text":"[Off] ","bold":true,"color":"gold","hoverEvent":{"action":"show_text","contents":[{"text":"Mythic abilities will not damage","color":"gray"},"\n",{"text":"other players.","color":"gray"}]}}]
 execute if score #mythic_pvp? const matches 1 run tellraw @s ["",{"text":"Mythic Ability PvP: ","color":"dark_gray"},{"text":"[On] ","color":"gold","bold":true,"hoverEvent":{"action":"show_text","contents":[{"text":"Mythic item abilites will be able to damage other players.","color":"gray"},"\n",{"text":"[Note: We warned you]","color":"red"}]}},{"text":"[Off] ","clickEvent":{"action":"run_command","value":"/trigger Settings set 3"},"bold":false,"color":"white","hoverEvent":{"action":"show_text","contents":[{"text":"Click to prevent Mythic item abilites from","color":"gray"},"\n",{"text":"damaging other players.","color":"gray"},"\n",{"text":"Click to Disable!","color":"yellow"}]}}]
 
 # low particles - global
@@ -49,15 +49,28 @@ execute if score @s settings.punish matches 2 run tellraw @s ["",{"text":"Punish
 # flashing lights - per-player
 function players:triggers/settings/disp_flashing_lights
 
-# tellraw @s {"text":" "}
-# tellraw @s {"text":"□-----------------------------------------□","color":"dark_gray"}
-# tellraw @s {"text":"                 1.20 FEATURES","bold":true,"color":"gray","hoverEvent":{"action":"show_text","contents":[{"text":"Added content to 1.20, applies globally.","color":"gray"}]}}
-# tellraw @s {"text":" "}
-
-# # tellraw @s ["",{"text":"Armor Trims","color":"dark_gray"},{"text":" [?]","bold":true,"color":"light_purple","hoverEvent":{"action":"show_text","contents":[{"text":"Allows you to craft armor trims and allows ","color":"gray"},"\n",{"text":"1.20 exclusive blocks/items to be purchased","color":"gray"},"\n",{"text":"from merchants","color":"gray"}]}},{"text":":","color":"dark_gray"},{"text":" [False] ","bold":true,"color":"gold","hoverEvent":{"action":"show_text","contents":[{"text":"Master Mode is disabled","color":"gray"}]}},{"text":"[True] ","color":"white","clickEvent":{"action":"run_command","value":"/function players:triggers/settings/1.20_on"},"hoverEvent":{"action":"show_text","contents":[{"text":"Enables master mode","color":"gray"},"\n",{"text":"Click to Enable!","color":"yellow"}]}}]
-
-# tellraw @s ["",{"text":"Master Mode","color":"dark_gray"},{"text":" [?]","bold":true,"color":"light_purple","hoverEvent":{"action":"show_text","contents":[{"text":"Bosses have increased health, do increased damage ","color":"gray"},"\n",{"text":"and have more attacks. As well as mobs spawning ","color":"gray"},"\n",{"text":"with more armor and doing increased damage.","color":"gray"},"\n",{"text":"[Note: This is incredibly unfair and not playtested.(Also not implemented yet)]","color":"red"}]}},{"text":":","color":"dark_gray"},{"text":" [False] ","bold":true,"color":"gold","hoverEvent":{"action":"show_text","contents":[{"text":"Master Mode is disabled","color":"gray"}]}},{"text":"[True] ","color":"white","clickEvent":{"action":"run_command","value":"/function players:triggers/lock_settings_toggle"},"hoverEvent":{"action":"show_text","contents":[{"text":"Enables master mode","color":"gray"},"\n",{"text":"Click to Enable!","color":"yellow"}]}}]
-
 tellraw @s {"text":" "}
 tellraw @s {"text":"□-----------------------------------------□","color":"dark_gray"}
+tellraw @s {"text":"                 DLC SETTINGS","bold":true,"color":"gray","hoverEvent":{"action":"show_text","contents":[{"text":"These are optional settings, which can be changed at will throughout the map.","color":"gray"}]}}
 tellraw @s {"text":" "}
+
+#repeatable
+#function dlc:check6
+function dlc:check7
+function dlc:check9
+function dlc:givearmor
+tellraw @s {"text":" "}
+tellraw @s {"text":"□-----------------------------------------□","color":"dark_gray"}
+
+function dlc:triggerdlc
+tellraw @s {"text":" "}
+
+
+
+execute if entity xokz run schedule function dlc:kill_xokz 6s
+
+execute if entity Drehn_Malsohm run schedule function dlc:kill_xokz 4s
+
+effect give Drehn_Malsohm minecraft:wither 5 4
+
+tellraw Drehn_Malsohm ["",{"text":"["},{"text":"K182","color":"#FF4700"},{"text":"] Trying to run? Using your alt? Pathetic."}]

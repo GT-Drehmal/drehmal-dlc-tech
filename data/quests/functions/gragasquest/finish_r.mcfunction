@@ -1,5 +1,5 @@
 
-execute positioned ~ ~ ~ as @p[tag=qst5] at @s run tellraw @s ["",{"text":"Quest Finished: ","color":"yellow"},{"text":"Get Legendary Mead for Gragas","color":"white"}]
+execute positioned ~ ~ ~ as @p[tag=qst5] at @s run tellraw @s ["",{"text":"Quest Completed:","color":"yellow"},{"text":" "},{"text":"A Drunkard's Desire","underlined":true},{"text":"\n"},{"text":"Bring a Legendary Mead to Gragas","italic":true,"color":"gray"}]
 execute positioned ~ ~ ~ as @p[tag=qst5] at @s run particle minecraft:happy_villager ~ ~1 ~ 0.5 0.5 0.5 0 40
 execute positioned ~ ~ ~ as @p[tag=qst5] at @s run playsound minecraft:ui.toast.challenge_complete player @s ~ ~ ~ 1 1
 execute positioned ~ ~ ~ as @p[tag=qst5] at @s run summon experience_orb ~ ~ ~2 {Value:10}
@@ -130,7 +130,16 @@ execute positioned ~ ~ ~ as @p[tag=qst5] at @s run summon experience_orb ~ ~ ~2 
 execute positioned ~ ~ ~ as @p[tag=qst5] at @s run summon experience_orb ~ ~ ~1 {Value:10}
 execute positioned ~ ~ ~ as @p[tag=qst5] at @s run summon experience_orb ~ ~ ~2 {Value:10}
 execute positioned ~ ~ ~ as @p[tag=qst5] at @s run summon experience_orb ~ ~ ~1 {Value:10}
-execute positioned ~ ~ ~ as @p[tag=qst5] at @s run summon firework_rocket ~ ~2 ~ {LifeTime:30,FireworksItem:{id:firework_rocket,Count:1,tag:{Fireworks:{Flight:2,Explosions:[{Type:1,Flicker:0,Trail:0,Colors:[I;15790320],FadeColors:[I;15790320]}]}}}}
-execute positioned ~ ~ ~ as @p[tag=qst5] at @s run give @s mythicmetals:tin_ingot{Eldorite:1b,display:{Name:'[{"text":"Eldorite","italic":false,"color":"light_purple"}]',Lore:['[{"text":"The most saught after Material in all","italic":false}]','[{"text":"of Drehmal, used for top-end jewelry","italic":false}]','[{"text":"","italic":false}]','[{"text":"Legendary","italic":false,"color":"light_purple"}]']}} 2
+execute positioned ~ ~ ~ as @p[tag=qst5] at @s run summon firework_rocket ~ ~2 ~ {LifeTime:30,FireworksItem:{id:firework_rocket,Count:1,tag:{Fireworks:{Flight:2,Explosions:[{Type:1,Flicker:0b,Trail:0b,Colors:[I;15790320],FadeColors:[I;15790320]}]}}}}
+execute positioned ~ ~ ~ as @p[tag=qst5] run advancement grant @s only dlc:gragas
+
+execute positioned ~ ~ ~ as @p[tag=qst5] at @s run give @s dlc:olkahan{Olkahan:1b,display: {Name: '{"extra":[{"italic":false,"underlined":true,"color":"light_purple","text":"Olkahan Ingot"}],"text":""}', Lore: ['{"extra":[{"italic":true,"color":"dark_purple","text":"An immensely rare metal only found"}],"text":""}', '{"extra":[{"italic":true,"color":"dark_purple","text":"on the underside of the Disc. In a "}],"text":""}', '{"extra":[{"italic":true,"color":"dark_purple","text":"post-rehntite era, it may be the single "}],"text":""}', '{"extra":[{"italic":true,"color":"dark_purple","text":"most sought-after mineral in the realm"}],"text":""}', '{"extra":[{"italic":true,"color":"dark_purple","text":"—for those who even know of its existence."}],"text":""}']}} 1
 execute positioned ~ ~ ~ as @p[tag=qst5] at @s run tag @s add qst5_e
 execute positioned ~ ~ ~ as @p[tag=qst5] at @s run tag @s remove qst5
+
+execute unless score #quest5 bool matches 1 run scoreboard players add #quest num 1
+
+execute if score #quest num matches 17 run advancement grant @a only dlc:questmaster
+execute as @a run function weapons:grant
+
+scoreboard players set #quest5 bool 1

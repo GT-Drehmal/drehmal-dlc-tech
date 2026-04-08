@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Piecemaker:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/piecemaker"
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "mcdw:crossbow_cog_crossbow"
+        },
+        "title": {
+            "color": "red",
+            "text": "Piecemaker"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained Piecemaker, a testament to the power of Maelmari engineering."
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:forgotten"
+}

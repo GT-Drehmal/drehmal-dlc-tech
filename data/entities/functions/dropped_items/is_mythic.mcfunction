@@ -1,5 +1,9 @@
 execute if predicate players:is_oblivion store success score #load_this temp run tag @s add mythic_invul
 execute if predicate players:is_frenzy store success score #load_this temp run tag @s add mythic_invul
+execute if predicate players:is_amaranthine store success score #load_this temp run tag @s add mythic_invul
+execute if predicate players:is_providence store success score #load_this temp run tag @s add mythic_invul
+execute if predicate players:is_unknown store success score #load_this temp run tag @s add mythic_invul
+execute if predicate players:is_prismatic store success score #load_this temp run tag @s add mythic_invul
 execute if predicate players:is_asc store success score #load_this temp run tag @s add mythic_invul
 execute if predicate players:is_mb store success score #load_this temp run tag @s add mythic_invul
 execute if predicate players:is_cal store success score #load_this temp run tag @s add mythic_invul
@@ -7,3 +11,8 @@ execute if predicate players:is_mal store success score #load_this temp run tag 
 execute if predicate players:is_zenith store success score #load_this temp run tag @s add mythic_invul
 execute if predicate players:is_syzygy store success score #load_this temp run tag @s add mythic_invul
 execute if predicate players:is_mb_in store success score #load_this temp run tag @s add mythic_invul
+execute if predicate players:is_levi store success score #load_this temp run tag @s add mythic_invul
+execute if predicate players:is_wings store success score #load_this temp run tag @s add mythic_invul
+execute if predicate players:is_soul store success score #load_this temp run tag @s add mythic_invul
+execute if predicate players:is_component store success score #load_this temp run tag @s add mythic_invul
+execute if predicate players:is_voidrecall store success score #load_this temp run tag @s add mythic_invul

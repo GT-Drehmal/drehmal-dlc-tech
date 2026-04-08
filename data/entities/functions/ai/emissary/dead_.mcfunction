@@ -11,7 +11,7 @@ execute rotated ~ 0 run summon marker ^ ^0.2 ^1.5 {Tags:["em.soul"]}
 
 teleport @s ~ -1000 ~
 
-schedule function dialogue:myth/dia13/void6/0 18s
+execute unless entity @a[tag=primal_journey] run schedule function dialogue:myth/dia13/void6/0 18s
 
 tag @a remove emissary.infight
 tag @a remove em.2fails
@@ -47,3 +47,7 @@ kill @e[type=armor_stand,tag=em_spike2]
 kill @e[type=armor_stand,tag=emissary_orb]
 kill @e[type=armor_stand,tag=em_spike1]
 kill @e[type=armor_stand,tag=escythe]
+
+execute as @a[tag=primal_journey] run schedule function dlc:primal_journey/win 17s
+scoreboard players set #emissary tempdeaths 1
+execute as @a run function dlc:telldeaths

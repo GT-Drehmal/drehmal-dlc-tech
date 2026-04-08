@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Despair:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/despair"
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "dlc:fragment_of_despair"
+        },
+        "title": {
+            "color": "gold",
+            "text": "Fragment of Despair"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained A Bloodthirsty Upgrade Component"
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:upgradec"
+}

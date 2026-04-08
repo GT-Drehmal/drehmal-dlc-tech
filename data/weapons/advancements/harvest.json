@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{SoulSickle:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/harvest"
+        
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "mcdw:scythe_soul_scythe"
+        },
+        "title": {
+            "color": "red",
+            "text": "Harvest's Hope"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained Harvest's Hope, the blade of Meadows."
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:hang"
+}

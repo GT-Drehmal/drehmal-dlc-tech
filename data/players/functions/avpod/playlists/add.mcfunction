@@ -70,6 +70,12 @@ execute if score #avpod.newsong temp matches 53 run tellraw @s {"text":"Added [F
 execute if score #avpod.newsong temp matches 54 run tellraw @s {"text":"Added [Before the Storm]!","color":"green"}
 execute if score #avpod.newsong temp matches 55 run tellraw @s {"text":"Added [At The Edge of Oblivion]!","color":"green"}
 execute if score #avpod.newsong temp matches 56 run tellraw @s {"text":"Added [Death of a World]!","color":"green"}
+execute if score #avpod.newsong temp matches 57 run tellraw @s {"text":"Added [Fate of the Fettered]!","color":"green"}
+execute if score #avpod.newsong temp matches 58 run tellraw @s {"text":"Added [Xor'huul]!","color":"green"}
+execute if score #avpod.newsong temp matches 59 run tellraw @s {"text":"Added [Furtherance]!","color":"green"}
+execute if score #avpod.newsong temp matches 60 run tellraw @s {"text":"Added [Obsolescence]!","color":"green"}
+execute if score #avpod.newsong temp matches 61 run tellraw @s {"text":"Added [Mark of the Burnt]!","color":"green"}
+execute if score #avpod.newsong temp matches 62 run tellraw @s {"text":"Added [Sal'Anyr]!","color":"green"}
 
 scoreboard players reset #avpod.newsong temp 
 tellraw @s " "

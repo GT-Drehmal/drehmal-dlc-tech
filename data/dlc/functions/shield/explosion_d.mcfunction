@@ -1,4 +1,9 @@
-execute at @p[tag=shielded] run execute as @e[predicate=dev:entity_properties/flags/is_hurt,distance=..8,type=!player] run effect give @s mcdar:stunned 3 1 true
-execute at @p[tag=shielded] run execute as @e[predicate=dev:entity_properties/flags/is_hurt,distance=..8,type=!player] run effect give @s glowing 3 1 true
+execute at @p[tag=shielded] run execute as @e[predicate=entities:hurt2,distance=..16,tag=!mythic_pvp,tag=!shielded,type=!#entities:dummy,type=!#entities:tickless_passive,type=!#entities:highcapacity,type=!#entities:proj] run effect give @s[tag=!oblivion_immune,tag=!obv.immune] mcdar:stunned 3 1 true
+execute at @p[tag=shielded] run execute as @e[predicate=entities:hurt2,distance=..16,tag=!mythic_pvp,tag=!shielded,type=!#entities:dummy,type=!#entities:tickless_passive,type=!#entities:highcapacity,type=!#entities:proj] run effect give @s[tag=!oblivion_immune,tag=!obv.immune] glowing 3 1 true
+execute at @p[tag=shielded] run execute as @e[predicate=entities:hurt2,distance=..16,tag=!mythic_pvp,tag=!shielded,type=!#entities:dummy,type=!#entities:tickless_passive,type=!#entities:highcapacity,type=!#entities:proj] unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1 rubber_nocd by @p[tag=shielded]
+execute at @p[tag=shielded] run execute as @e[predicate=entities:hurt2,distance=..16,tag=!mythic_pvp,tag=!shielded,type=!#entities:dummy,type=!#entities:tickless_passive,type=!#entities:highcapacity,type=!#entities:proj] if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+
+
+
 
 schedule function dlc:shield/explosion_loop 2t

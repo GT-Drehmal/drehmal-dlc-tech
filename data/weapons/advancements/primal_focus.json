@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{PrimalFocus:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/primal_focus"
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "dlc:primal_focus"
+        },
+        "title": {
+            "color": "gold",
+            "text": "Primal Focus"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained a Supercharged Upgrade Component"
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:harbinger"
+}

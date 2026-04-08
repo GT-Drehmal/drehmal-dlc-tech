@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Verdant:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/verdant"
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "mcdw:crossbow_harpoon_crossbow"
+        },
+        "title": {
+            "color": "red",
+            "text": "Verdant Lord"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained Verdant Lord, relentless defender of the East."
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:piecemaker"
+}

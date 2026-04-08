@@ -1,0 +1,2 @@
+execute positioned 26299.83 193.00 153.88 as @a[distance=..40] at @s run function players:music/reset
+execute positioned 26299.83 193.00 153.88 as @a[distance=..40] at @s run playsound minecraft:custom.ossein_end record @s ~ ~ ~

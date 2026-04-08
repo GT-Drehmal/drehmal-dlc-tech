@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{B52:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/b52"
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "dlc:b52"
+        },
+        "title": {
+            "color": "dark_purple",
+            "text": "B-52 Excavator"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained the Legendary B-52, tool of Avsohm."
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:hovad"
+}

@@ -1,0 +1,36 @@
+{
+    "display": {
+      "icon": {
+        "item": "dlc:serpent_fin"
+      },
+      "title": {
+        "text": "Serpent's Fin",
+        "color": "dark_red"
+      },
+      "description": {
+        "text": "Obtained A Torrential Upgrade Component",
+        "color": "gray"
+      },
+      "frame": "task",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": true
+    },
+    "parent": "weapons:resonant",
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "nbt": "{Serpent:1b}"
+            }
+          ]
+        }
+      }
+    },
+    "rewards": {
+      "function": "weapons:advancement/serpents"
+    }
+  }
+  

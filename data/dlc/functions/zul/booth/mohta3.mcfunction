@@ -1,0 +1,1 @@
+summon dlc:collector 23.55 67.00 5308.30 {NoAI:1b,Silent:1b,Invulnerable:1b,Rotation: [-180.0f, 0.0f]}

@@ -1,5 +1,5 @@
 scoreboard players set dlc#c spawnstarrite3 1
-tellraw @s {"text":"This may take a while... do not run any additional commands till this is finished","bold":true,"color":"dark_red"}
+tellraw @s {"text":"This may take a while... do not run any additional commands until this is finished","bold":true,"color":"dark_red"}
 
 execute positioned -3250 149 -480 run forceload add ~ ~
 
@@ -67,6 +67,7 @@ execute positioned 1683.31 19.00 -2730.20 run forceload add ~ ~
 
 execute positioned -1248.64 16.00 480.35 run forceload add ~ ~
 
+execute in minecraft:lodahr positioned 17 130 -1570 run forceload add ~ ~
 
 schedule function dlc:starrite3_2 3s
 

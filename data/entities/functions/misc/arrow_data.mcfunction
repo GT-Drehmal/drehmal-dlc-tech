@@ -1,4 +1,6 @@
 execute if entity @s[tag=ossein] run scoreboard players set #ossein_arrow temp 1
+execute if entity @s[tag=ethgar] run scoreboard players set #ethgar_arrow temp 1
+execute if entity @s[tag=ethgar] run scoreboard players set #ground_clear temp 1
 execute if entity @s[tag=ossein] run scoreboard players set #ground_clear temp 1
 execute if entity @s[tag=foundry_wave] run scoreboard players set #ground_clear temp 1
 execute if entity @s[tag=Ultva] store success score #ground_clear temp run scoreboard players set #ultva temp 1
@@ -22,3 +24,10 @@ execute if entity @s[type=player] run scoreboard players set #pavgun? temp 1
 execute if entity @s[type=#minecraft:skeletons] run scoreboard players set #skeleton? temp 1
 execute if entity @s[tag=mb_run_skele] run scoreboard players set #mb_shot temp 1
 execute if score @s t.fear matches 1.. run scoreboard players set #teth_velo? temp 1
+execute if predicate players:holding/fdry_gun run scoreboard players set #fdry_gun temp 1
+execute if predicate players:holding/fire_bow run scoreboard players set #mal_arrow temp 1
+
+execute if predicate players:holding/piecemaker run scoreboard players set #piecemaker_arrow temp 1
+execute if entity @s[tag=timeworn_hunter] run scoreboard players set #hunter_arrow temp 1
+execute if entity @s[tag=Ultva] run scoreboard players set #ultva_arrow temp 1
+execute if predicate players:holding/pleasures run scoreboard players set #pleasure_arrow temp 1

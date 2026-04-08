@@ -19,21 +19,24 @@ execute as @e[type=#entities:proj,tag=!unloaded,tag=!arrow.inground] at @s run f
 #--------------OTHER_TICK--------------#
 execute as @e[type=#entities:tickless_passive,tag=!] at @s run function entities:misc_passive_tick
 execute as @e[type=#entities:tickless_nuetral,tag=!] at @s run function entities:misc_nuetral_tick
-execute as @e[type=!#entities:oblivion_immune,tag=!unloaded,predicate=entities:status_scores] at @s run function entities:status_tick
+execute as @e[tag=!oblivion_immune,tag=!unloaded,predicate=entities:status_scores] at @s run function entities:status_tick
 
 #-------------HOSTILE_TICK-------------#
 execute as @e[type=!#entities:highcapacity] unless entity @s[scores={uuid0=-2147483648..2147483647}] run function entities:misc/grab_uuid
-
 execute as @e[type=#entities:hostile,tag=Scale] unless score @s ScaleLvl = playercount playercount run function entities:scaling/main
-
-execute as @e[type=ender_dragon] at @s run function entities:ai/tethlaen/main
+execute as @e[type=piglin] run function entities:piglin_tick
+execute as @e[type=ender_dragon,tag=!teth_loser] at @s run function entities:ai/tethlaen/main
 execute as @e[type=#entities:spider,tag=!] at @s run function entities:spider_tick
 execute as @e[type=zombie,tag=!] at @s run function entities:zombie_tick
+execute as @e[type=piglin_brute] run function entities:piglin_brute_tick
 execute as @e[type=#minecraft:skeletons,tag=!] at @s run function entities:skeleton_tick
 execute as @e[type=vex,tag=] at @s run function entities:vex_tick
 execute as @e[type=guardian,tag=!] at @s run function entities:guardian_tick
 execute as @e[type=#entities:tickless_hostile,tag=!] at @s run function entities:misc_hostile_tick
-
+execute as @e[type=dlc:collector] at @s run function dlc:zul/tick
+execute as @e[tag=waterspiked,type=cave_spider] run function entities:ai/waterspiked/main
+execute as @e[tag=primal_splitter_child,type=cave_spider] run function dlc:mobs/primal_splitter/small_tick
+execute as @e[type=#entities:hostile,tag=!converted] at @s if entity @a[distance=..80] run function dlc:mobs/convert
 
 #execute as @e[type=!player,type=!#entities:highcapacity,tag=!unloaded] at @s run function entities:low_capacity_tick
 

@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Nightwatch:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/night"
+        
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "mcdw:dagger_backstabber"
+        },
+        "title": {
+            "color": "red",
+            "text": "Night Watch"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained Night Watch, the northeast's finest assassination implement."
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:daybreak"
+}

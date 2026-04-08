@@ -77,7 +77,34 @@ execute if entity @s[tag=samurai_spinring] run function entities:ai/samurai/spin
 execute if entity @s[tag=samurai_dash_loc] run function entities:ai/samurai/charge/dash_loc
 execute if entity @s[tag=sentry_telegraph] run function entities:ai/sentry/telegraph_main
 execute if entity @s[tag=osteo_slash] run function players:items/osteo2/slash_tick
+execute if entity @s[tag=zenith_visual] run function players:items/avsaber/particle_tick
+execute if entity @s[tag=oblivion_visual] run function players:items/obv/particle_tick
+execute if entity @s[tag=ossein_visual] run function entities:ai/ossein/tick/particle_tick
+execute if entity @s[tag=mal_drain] run function players:items/mal/particle_tick
+execute if entity @s[tag=verdant_tag] positioned ^ ^ ^0.5 unless entity @e[tag=verdant] run function players:items/verdant/detect
+execute if entity @s[tag=buffer_heal] run function entities:ai/buffer/particle_tick
+execute if entity @s[tag=ambition] run function players:items/ambition/particle_tick
+execute if entity @s[tag=driftbone] run function entities:ai/driftbone/particle_tick
+execute if entity @s[tag=lampjaw] run function entities:ai/lampjaw/particle_tick
+#execute if entity @s[tag=starfall_tag] at @s run forceload add ~ ~
+execute if entity @s[tag=asc_star] run function projectiles:fancy/particle_tick
+execute if entity @s[tag=ultva_orb] run function entities:ai/ultva/particle_tick
+
+execute if entity @s[tag=mb_boom] rotated 0 65 run function players:items/mb/laser_effect
+execute if entity @s[tag=small_spiral] at @s run function players:items/mb/small_spiral
+execute if entity @s[tag=khive_blind] run function entities:ai/khive_zombie/particle_tick
+
+execute if entity @s[tag=primal_staff] run function players:items/primal_staff/spawn
+execute if entity @s[tag=temp_spawn_primal] run function dlc:primal_journey/spawn_tick
+#execute if entity @s[tag=terminus_visual] run function dlc:modify/particle_tick
+
 
 execute if score #5T timer matches 4 if entity @s[tag=deathmarker] run function entities:misc/deathmarker/kill_on_despawn
 
 execute if score #worm_moving? bool matches 1 unless score #b.passive_forceai? bool matches 1 if entity @s[tag=forceload] run function entities:ai/worm/load/forceload_tick
+
+
+execute if entity @s[tag=ossein_default] run function entities:bosses/ossein/spawn_ani_default
+execute if entity @s[tag=ossein_prime] run function entities:bosses/ossein/spawn_ani_prime
+
+execute if entity @s[tag=weaver_needle] run function players:items/weaver/particle_tick

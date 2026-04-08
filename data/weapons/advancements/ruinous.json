@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Ruinous:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/ruinous"
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "dlc:ruinous_tablet"
+        },
+        "title": {
+            "color": "gold",
+            "text": "Ruinous Tablet"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained a Ruinous Upgrade Component"
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:despair"
+}

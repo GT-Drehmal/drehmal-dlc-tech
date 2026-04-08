@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Pleasures:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/pleasures"
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "mcdw:bow_love_spell_bow"
+        },
+        "title": {
+            "color": "red",
+            "text": "Pleasures of War"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained Pleasures of War, forgotten weapon of the Dahe Clan."
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:verdant"
+}

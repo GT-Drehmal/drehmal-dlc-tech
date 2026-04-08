@@ -32,19 +32,32 @@ execute if score @s finaltp matches 196 positioned ~ ~ ~ run tag @s add settings
 execute if score @s finaltp matches 198 positioned ~ ~ ~ run tag @s add settings.usupress
 execute if score @s finaltp matches 199 positioned ~ ~ ~ run tag @s add settings.usupress
 
-execute if score @s finaltp matches 40 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 80 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 120 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 140 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 160 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 170 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 180 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 185 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 190 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 193 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 196 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 198 positioned ~ ~ ~ run damage @s 1
-execute if score @s finaltp matches 199 positioned ~ ~ ~ run damage @s 1
+execute if score @s finaltp matches 40 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 40 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 80 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 80 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 120 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 120 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 140 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 140 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 160 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 160 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 170 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 170 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 180 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 180 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 185 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 185 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 190 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 190 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 193 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 193 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 196 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 196 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 198 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 198 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if score @s finaltp matches 199 positioned ~ ~ ~ unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 1
+execute if score @s finaltp matches 199 positioned ~ ~ ~ if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
 
 
 execute if score @s finaltp matches 120..150 positioned ~ ~ ~ run particle dust 1 0.9 0.1 1 ~ ~25 ~ 0.2 25 0.2 0 500 force
@@ -58,7 +71,7 @@ execute if score @s finaltp matches 199 positioned ~ ~ ~ run particle end_rod ~ 
 execute if score @s finaltp matches 199 positioned ~ ~ ~ run particle cloud ~ ~2 ~ 0 0 0 0.5 50 force
 
 
-execute if score @s finaltp matches 199 positioned ~ ~ ~ run playsound minecraft:dcustom.block.bell.resonate master @a ~ ~ ~ 1 1 1
+execute if score @s finaltp matches 199 positioned ~ ~ ~ run playsound minecraft:dcustom.block.bell.resonate block @a ~ ~ ~ 1 1 1
 
 execute if score @s finaltp matches 199 positioned ~ ~ ~ run advancement grant @s only advancements:primordial/closure
 

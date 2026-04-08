@@ -8,6 +8,7 @@ scoreboard players set #hps temp 2000
 scoreboard players operation #hps temp /= #mspeed temp
 
 execute if predicate players:holding/masayoshi run function players:items/mayo_dam
+execute if predicate players:holding/masayoshi_offhand run function players:items/mayo_dam
 
 execute as @e[type=!player,type=!#core:oblivion_immune,distance=..8,nbt={HurtTime:10s}] run function players:hurt_mob
 
@@ -27,5 +28,19 @@ execute as @e[type=!player,type=!#core:oblivion_immune,distance=..8,nbt={HurtTim
 execute as @e[type=!player,type=!#core:oblivion_immune,distance=..8,nbt={HurtTime:10s},scores={vt_timer2=1..}] run function players:items/vt/release
 
 scoreboard players reset @s atk_charge
+
+execute if predicate players:holding/duskfall as @e[type=!player,type=!#core:oblivion_immune,distance=..8,nbt={HurtTime:10s}] run function players:items/gauntlets/duskfall
+execute if predicate players:holding/daybreak run function players:items/gauntlets/daybreak
+
+execute as @e[type=!player,type=!#core:oblivion_immune,distance=..8,nbt={HurtTime:10s},tag=bleed,scores={bleed=5..}] run function players:items/hangyaku/damage
+
+execute as @e[type=!#core:oblivion_immune,distance=..8,nbt={HurtTime:10s},tag=hexed] run function players:items/hexed/reset
+
+execute at @s as @e[type=piglin,tag=neutral,tag=!hostile,distance=..8,nbt={HurtTime:10s}] run tag @s add hostile
+execute at @s if entity @e[type=piglin,tag=hostile,limit=1,sort=nearest] run tag @s remove friend_of_mahkar2
+
+execute if predicate players:holding/providence if score @s destiny_damage matches 40.. as @e[type=!player,type=!#core:oblivion_immune,distance=..8,nbt={HurtTime:10s},tag=!destiny] at @s run function players:items/providence/main
+scoreboard players reset @s destiny_damage
+tag @s[tag=dash_cd] remove dash_cd 
 
 advancement revoke @s only players:hurt_entity

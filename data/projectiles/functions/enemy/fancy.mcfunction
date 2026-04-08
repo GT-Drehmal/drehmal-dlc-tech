@@ -19,5 +19,17 @@ execute if entity @s[tag=avgun] run particle minecraft:dust 0.667 0 0.655 1 ~ ~1
 execute if entity @s[tag=mb_run_laser] run function projectiles:enemy/fancy/mb_run_laser
 execute if entity @s[tag=em_meteor] run function projectiles:enemy/fancy/em_meteor
 execute if entity @s[tag=com_laser] run function projectiles:enemy/fancy/com_laser
+execute if entity @s[tag=fdry_com_gun] run function projectiles:enemy/fancy/fdry_laser
+execute if entity @s[tag=fdry_gun] run function projectiles:enemy/fancy/fdry_gun
+execute if entity @s[tag=avgun_weak] run function projectiles:enemy/fancy/avgun_weak
+execute if entity @s[tag=mal_arrow] run function projectiles:enemy/fancy/mal_arrow
+execute if entity @s[tag=sentry_machine_gun] run function projectiles:enemy/fancy/sentry
+execute if entity @s[tag=sentry_machine_gun_angy] run function projectiles:enemy/fancy/sentry_angy
 
-execute if entity @s[tag=escythe_spawn] run particle witch ~ ~1.7 ~
+execute if entity @s[tag=ob_shard] at @s run particle witch ~ ~ ~ 0 0 0 0 1
+execute if entity @s[tag=ob_shard,tag=!player] at @s run tp @s ~ ~ ~ facing entity @p[distance=10..]
+execute if entity @s[tag=ob_shard] at @s if entity @a[distance=..10] run tag @s add player
+execute if entity @s[tag=ob_shard] at @s if entity @a[distance=..1.5] unless entity @s[scores={blocking3=..4,blocked=1..}] run damage @s 24 minecraft:deconceptualized
+execute if entity @s[tag=ob_shard] at @s if entity @a[distance=..1.5] if entity @s[scores={blocking3=..4,blocked=1..}] run function players:items/reticent/main
+execute if entity @s[tag=escythe_spawn] at @s run particle witch ~ ~1.7 ~ 0 0 0 0 0
+execute if entity @s[tag=abbot_spear] run function projectiles:enemy/fancy/abbot_spear

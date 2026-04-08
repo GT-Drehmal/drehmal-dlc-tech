@@ -1,0 +1,36 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Hangyaku:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/hang"
+        
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "mcdw:sword_sinister"
+        },
+        "title": {
+            "color": "red",
+            "text": "Hangyaku"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained Hangyaku, fiery Firteidan masterwork."
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:force"
+}

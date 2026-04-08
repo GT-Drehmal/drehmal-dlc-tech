@@ -19,7 +19,7 @@ scoreboard players set technomancer_mob_count foundry 1
 scoreboard players set executive_mob_count foundry 1
 
 function foundry:reset_exec_bar
-
+execute as @a[predicate=players:locations/foundry_arena] run tag @s add tempdeaths
 scoreboard players reset #glory bool
 execute unless score #failed_wave foundry matches 0.. run scoreboard players set #glory bool 1
 execute unless score #failed_wave foundry matches 3.. run scoreboard players set wave_number foundry 1
@@ -27,5 +27,6 @@ execute if score #failed_wave foundry matches 3.. run scoreboard players set wav
 execute if score #failed_wave foundry matches 5.. run scoreboard players set wave_number foundry 5
 
 fill -3296 110 1580 -3292 114 1578 minecraft:black_stained_glass
-
+kill @e[tag=fdry_laser_lower]
+kill @e[tag=fdry_laser_top]
 schedule function foundry:wave_logic 1t

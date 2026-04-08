@@ -37,6 +37,9 @@
     "minecraft:minecart",
     "minecraft:tnt",
     "minecraft:trident",
-    "minecraft:wither_skull"
+    "minecraft:wither_skull",
+    "minecraft:item_display",
+    "interaction",
+    "minecraft:text_display"
   ]
 }

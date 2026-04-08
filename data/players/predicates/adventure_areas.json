@@ -7,6 +7,22 @@
         },
         {
             "condition":"reference",
+            "name":"players:locations/red_dawn"
+        },
+        {
+            "condition":"reference",
+            "name":"players:locations/red_dawn_devzone"
+        },
+        {
+            "condition":"reference",
+            "name":"players:in_generals_arena"
+        },       
+        {
+            "condition":"reference",
+            "name":"players:in_primal_journey"
+        },
+        {
+            "condition":"reference",
             "name":"players:locations/exodus_vault"
         },
         {
@@ -60,6 +76,14 @@
         {
             "condition":"reference",
             "name":"players:space"
+        },
+                {
+            "condition":"reference",
+            "name":"players:locations/oblivion"
+        },
+                {
+            "condition":"reference",
+            "name":"players:locations/asc_dungeon"
         },
         {
             "condition":"reference",

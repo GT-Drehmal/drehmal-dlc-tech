@@ -3,7 +3,10 @@ execute at @s anchored eyes positioned ^ ^ ^ positioned ~ ~-0.3 ~ as @e[type=ite
 function players:misc/mb/replace_inert
 execute as @a at @s run function players:music/reset
 tag @s remove mb_holder
+scoreboard players reset @s mb_run
+tag @s remove mastermode
 scoreboard players reset #mb_run_active? bool
+tag @s remove exploded
 execute in minecraft:overworld positioned 26512 161 -96 run setblock ~3 ~ ~15 minecraft:light_gray_concrete
 
 scoreboard players reset #khive_talk bool
@@ -16,6 +19,7 @@ scoreboard players reset #at_gmachine bool
 scoreboard players reset #yav_hp int
 scoreboard players reset #gm_hp int
 scoreboard players reset #mb_picked bool
+scoreboard players reset #khive_scroll bool
 execute in minecraft:overworld positioned 26512 161 -96 run setblock ~2 ~ ~15 minecraft:light_gray_concrete
 execute in overworld run forceload remove 1737 -4393 1754 -4197
 

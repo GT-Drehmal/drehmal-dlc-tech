@@ -3,6 +3,9 @@ execute if entity @s[x=-1563,y=75,z=-471,distance=..60] run function players:mus
 execute if entity @s[x=-2976,y=145,z=-192,distance=..55] run function players:music/ebonrun
 execute if entity @s[x=-2717,y=66,z=-1770,distance=..100] run function players:music/athrah
 execute if entity @s[x=-1725,y=155,z=1882,distance=..60] run function players:music/nimahj
+execute if entity @s[predicate=players:locations/shatterhorn_gulch] run function players:music/shatterhorn
+execute if entity @s[predicate=players:locations/xorhuul] run function players:music/xorhuul
+execute if entity @s[predicate=players:locations/salanyr] run function players:music/salanyr
 execute if entity @s[x=-2170,y=76,z=3659,distance=..80] run function players:music/tharxax
 execute if entity @s[x=-21,y=72,z=5273,distance=..60] run function players:music/mohta
 execute if entity @s[x=2276,y=60,z=2463,distance=..60] run function players:music/gozak
@@ -16,6 +19,8 @@ execute if entity @s[x=3193,y=31,z=3284,dx=180,dy=100,dz=200] run function playe
 #execute if entity @s[x=4799,y=74,z=5708,distance=..100] run function players:music/firteid
 execute if predicate players:in_firt run function players:music/firteid
 execute if entity @s[x=26395,y=132,z=-187,dx=162,dy=25,dz=162] run function players:music/terminus
+execute if entity @s[predicate=players:locations/red_dawn_devzone] run function players:music/furtherance
+
 
 scoreboard players reset #at_palace temp
 execute positioned -3994 ~ 5981 if entity @s[distance=..100] run scoreboard players set #at_palace temp 1
@@ -32,6 +37,7 @@ execute if predicate players:locations/avsal run function players:music/avsal
 execute if predicate players:locations/exodus_vault run function players:music/exodus
 
 execute if score #ossein_music? bool matches 1 positioned 26303.0 ~ 154.5 if entity @s[distance=..40] run function players:music/ossein
+execute if score #generals_music? bool matches 1 positioned 27339.50 152.00 747.50 if entity @s[distance=..40,tag=!finished] run function players:music/generals
 
 
 execute if score #ultvamusic bool matches 1 positioned 27294 81 84 if entity @s[distance=..40] run function players:music/ultvaloop

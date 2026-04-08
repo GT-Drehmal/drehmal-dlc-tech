@@ -57,7 +57,7 @@ execute if score #10M timer matches 0 unless score #gotInertMyth bool matches 1.
 execute if score #mbi_picked? bool matches 1 if predicate entities:teth_shoot run particle wax_on -118.5 10.50 1640.5 0.2 0.5 0.2 0 3
 execute if score #tmb_picked? bool matches 1 if predicate entities:teth_shoot run particle wax_on 778.5 3.5 460.5 0.2 0.5 0.2 0 3
 
-execute if predicate core:nah/start in minecraft:lodahr run function core:scene/nah/daytick
+execute if score #visit_lodahr? bool matches 1 if predicate core:nah/start in minecraft:lodahr run function core:scene/nah/daytick
 
 execute unless score #znth_lights_on bool matches 1 if entity @a[x=-3227,y=71,z=1557,dx=2,dy=10,dz=4,predicate=players:is_not_dev] run function foundry:zenith/start
 
@@ -99,6 +99,10 @@ execute if score #orena_empty? bool matches 1 unless entity @a[x=26303.0,y=193.0
 execute unless score #orena_empty? bool matches 1 unless score #ossein_active? bool matches 1 run scoreboard players remove #ossein_respawn timer 1
 execute if score #ossein_active? bool matches 1 unless entity @a[x=26303.0,y=193.00,z=154.5,distance=..70] run function entities:bosses/ossein/despawn
 
+execute if score #generals_active? bool matches 1 positioned 27339.50 152.00 747.50 unless entity @a[distance=..50] run function entities:bosses/generals/despawn
+execute if score #generals_active? bool matches 1 positioned 27339.50 152.00 747.50 if entity @a[distance=..50] run scoreboard players add #tempdeaths timer 1
+
+
 execute if score #seinpress_old bool matches 1 if score #2T timer matches 1 if block 1030 61 3836 minecraft:polished_blackstone_button[powered=false] run scoreboard players reset #seinpress_old bool
 execute unless score #seinpress_old bool matches 1 if score #2T timer matches 0 if block 1030 61 3836 minecraft:polished_blackstone_button[powered=true] run function entities:bosses/ossein/attempt_spawn
 
@@ -139,7 +143,7 @@ execute if score #7S timer matches 0 if score #electrowater x matches 0 if score
 execute if score #electrowater x matches 0 run scoreboard players set #electrowater z 1
 
 execute if score #electrowater x matches 1 run function core:scene/exodus/waterparticles
-execute if score #electrowater y matches 1 run function core:scene/exodus/wateron2 
+execute if score #electrowater y matches 1 run function core:scene/exodus/wateron2
 
  
 execute if score #electrowater y matches 1 positioned -2735 17 2069 if entity @a[distance=..10] run function core:scene/exodus/doors/door3/open
@@ -152,14 +156,15 @@ execute if score #exodusdoor timer matches 1..300 run function core:scene/exodus
 #inscription animation
 
 #hovadchear fight
-execute if entity @a[predicate=core:in_hovadmain] run function core:scene/hovad/main
+execute if entity @a[predicate=core:in_hovadmain] unless entity @a[tag=primal_journey] run function core:scene/hovad/main
+execute if entity @a[predicate=core:in_hovadmain] if entity @a[tag=primal_journey] run function core:scene/hovad/main2
 
 
 #World timer
 
 execute if score #10T timer matches 3 run function core:scene/lighthouse/check
 
-
+execute if score #1S timer matches 0 store result score #daycount timer run time query day
 execute store result score #worldtime timer run time query daytime
 scoreboard players operation #worldtime timer %= #worldtime const
 execute store result score #worldtime x run scoreboard players get #worldtime timer
@@ -200,16 +205,98 @@ execute unless score #termstart bool matches 1 run particle minecraft:dust 1 0 0
 
 execute if score #10terminus100 bool matches 1 unless score #clearancedialogue bool matches 1 run function core:scene/avsal/perms/0
 
-execute as @a as @s[scores={dlc=1}] run function dlc:triggerdlc
+
+function core:scene/lodahr_portals/main
+
 
 function core:scene/lodahr_portals/main
 
 function core:scene/lodahr_portals/main
 
-function core:customweapons
-
+#function core:dlc
+execute if score #1S timer matches 1 run function core:adventuring_merchants
 function core:villagers
-
-function spm:world/tick
-
 function n_lev:tick
+
+
+execute if score #1S timer matches 1 store result score #daycount2 timer run time query day
+execute if score #1S timer matches 1 if score #daycount2 timer > #daycount3 timer run function dlc:zul/update
+execute if score #1S timer matches 1 run scoreboard players operation #daycount3 timer = #daycount2 timer
+
+execute if score #1S timer matches 1 store result score #daycount5 timer run time query day
+execute if score #1S timer matches 1 run scoreboard players operation #daycount5 timer %= #16 const
+
+execute if score #starfallen bool matches 1 if score #worldtime2 timer matches 17700..17900 run scoreboard players reset #starfallen bool
+execute if score #1S timer matches 0 store result score #worldtime2 timer run time query daytime
+
+
+execute as @a[limit=1,sort=random,predicate=players:overworld,predicate=!players:locations/in_terminus,predicate=!players:in_generals_arena,predicate=!players:locations/red_dawn_devzone,predicate=!players:locations/court_of_nothing,predicate=!players:in_primal_journey,predicate=!players:locations/ossein_arena,predicate=!players:locations/spawn_room] at @s if score #worldtime2 timer matches 18000.. unless score #daycount5 timer matches 15 unless score #daycount5 timer matches 7 unless score #starfallen bool matches 1 run function dlc:starfall/summon
+
+execute as @a[limit=1,sort=random,predicate=players:overworld,predicate=!players:locations/in_terminus,predicate=!players:in_generals_arena,predicate=!players:locations/red_dawn_devzone,predicate=!players:locations/court_of_nothing,predicate=!players:in_primal_journey,predicate=!players:locations/ossein_arena,predicate=!players:locations/spawn_room] at @s if score #worldtime2 timer matches 18000.. if score #daycount5 timer matches 7 unless score #starfallen bool matches 1 run function dlc:starfall/summon_1
+
+execute as @a[limit=1,sort=random,predicate=players:overworld,predicate=!players:locations/in_terminus,predicate=!players:in_generals_arena,predicate=!players:locations/red_dawn_devzone,predicate=!players:locations/court_of_nothing,predicate=!players:in_primal_journey,predicate=!players:locations/ossein_arena,predicate=!players:locations/spawn_room] at @s if score #worldtime2 timer matches 18000.. if score #daycount5 timer matches 15 unless score #starfallen bool matches 1 run function dlc:starfall/summon_2
+
+
+execute if score #frenzy bool matches 1 positioned 4723 153 5325 run function dlc:frenzy_upgrade/main
+
+#Dreadnought Tick Handler
+execute if entity @a[predicate=players:locations/red_dawn_devzone] run function core:dreadnought_tick
+
+# Asc Dungeon
+execute positioned -555.46 32.00 4997.47 if entity @a[distance=..50] as @e[tag=asc_display,type=armor_stand] at @s positioned ~ ~2 ~ run function particle:asc/animate
+execute positioned -555.46 32.00 4997.47 if entity @a[distance=..50] as @e[tag=asc_vis,tag=!powered,type=armor_stand] if predicate players:holding/inert_tablet run function dlc:tablet_start
+execute positioned -555.46 32.00 4997.47 if entity @a[distance=..50] as @e[tag=asc_vis,tag=!powered,type=armor_stand] unless predicate players:emptyhanded unless predicate players:holding/inert_tablet run function dlc:tablet_invalid
+execute if score #asc bool matches 1 positioned -555.46 32.00 4997.47 unless entity @a[distance=..50] run function dlc:asc/full_reset
+
+
+# --- Foundry Anim ---
+execute positioned -3293.01 112.16 1595.00 if entity @a[distance=..50] as @e[tag=foundry_vis,type=armor_stand] at @s rotated 0 180 positioned ~ ~1 ~0.2 if score #5T timer matches 0 run function particle:term/animate
+
+execute positioned -3293.01 112.16 1595.00 if entity @a[distance=..15] as @e[tag=foundry_display,tag=!powered,type=armor_stand] if predicate players:holding/primal_focus run function dlc:foundry_power 
+
+execute positioned -3293.01 112.16 1595.00 if entity @a[distance=..15] as @e[tag=foundry_display,tag=powered,type=armor_stand] unless predicate players:holding/primal_focus run function dlc:foundry_power2 
+
+execute positioned -3293.01 112.16 1595.00 if entity @a[distance=..15] as @e[tag=foundry_display,tag=powered,type=armor_stand] if score #fdry_finished bool matches 1 if predicate players:holding/primal_focus run function dlc:foundry_power3
+
+
+# --- Burnt Generals Button Message ---
+execute positioned -2851 41 5331 if entity @a[distance=..10] run execute unless score #generals_dead? bool matches 1 run title @a[tag=!bg_questholder,distance=..10] actionbar {"text":"A malevolent aura emanates from the central brazier...","color":"dark_red"}
+execute positioned -2851 41 5331 if entity @a[distance=..10] run execute unless score #generals_dead? bool matches 1 run title @a[tag=bg_questholder,distance=..10] actionbar {"text":"A presence stirs, waiting to be called forth...","color":"dark_red"}
+
+
+
+# --- Terminus Animation ---
+execute positioned 26475.47 141.08 -56.00 if entity @a[distance=..15] run function dlc:modify/main
+
+
+# --- Trial Legendary - Ihted Spawn ---
+
+execute unless score #ihted_spellforged_spawn bool matches 1 run execute in minecraft:lodahr positioned -963 245 -967 if entity @a[distance=..15] run function dlc:ihted_spawn
+
+
+
+execute as @e[tag=soul_burn,type=!#entities:laggy] run function players:items/soul/main
+
+execute as @e[tag=bleed,limit=1,type=!#entities:laggy] at @s run function players:items/hangyaku/bleed
+
+execute as @e[tag=tagged,scores={tag_cd=0}] run tag @s remove tagged
+execute as @e[tag=ambition] at @s unless entity @e[tag=!tagged,predicate=!players:holding/ambition,tag=!mythic_pvp,type=!#core:oblivion_immune,sort=nearest,limit=1,distance=..8] as @e[tag=tagged,scores={tag_cd=..2}] run scoreboard players remove @s tag_cd 1
+
+execute as @e[tag=hexed,type=!#entities:laggy] run function players:items/hexed/main
+
+# if we want to give mal 2 the draining ability
+#execute as @e[tag=draining,limit=2] at @s run function players:items/mal/drain2
+execute as @e[type=interaction,tag=swing_marker] unless entity @a[predicate=players:holding/male2] run kill @s
+
+
+execute as @e[tag=destiny,type=!#entities:laggy] run function players:items/providence/main_entity
+
+execute if score #hege bool matches 1 positioned 27493.64 161.50 839.79 unless entity @a[distance=..50] run function entities:ai/samurai/arena/reset
+
+execute if score #bern_active? bool matches 1 positioned -418.50 54.00 596.55 in lodahr unless entity @a[distance=..300] run function entities:ai/worm/despawn
+
+execute if score #teth_active bool matches 1 in the_end positioned 0.37 67.00 0.27 unless entity @a[distance=..400] run function entities:ai/tethlaen/despawn
+
+execute if score #fightinghovad bool matches 1 positioned 27295.52 82.00 86.05 unless entity @a[distance=..100] run function core:scene/hovad/reset_fight
+
+execute unless score #gotshield bool matches 1 positioned -1265.29 46.00 -4060.85 if loaded ~ ~ ~ if entity @a[distance=..10] if score #1S timer matches 10 run particle minecraft:firework -1261.57 47.60 -4062.42 0.2 0.2 0.2 1 50

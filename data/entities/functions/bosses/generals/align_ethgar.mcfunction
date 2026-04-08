@@ -1,0 +1,1 @@
+execute positioned 27365 161 750 as @e[tag=ethgar] run execute at @s run tp ~ ~195 ~

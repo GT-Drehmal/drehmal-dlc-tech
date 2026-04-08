@@ -1,0 +1,36 @@
+{
+    "display": {
+      "icon": {
+        "item": "dlc:spark_of_purity"
+      },
+      "title": {
+        "text": "Spark of Purity",
+        "color": "dark_red"
+      },
+      "description": {
+        "text": "Obtained a Pure Upgrade Component",
+        "color": "gray"
+      },
+      "frame": "task",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": true
+    },
+    "parent": "weapons:serpents",
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "nbt": "{Spark:1b}"
+            }
+          ]
+        }
+      }
+    },
+    "rewards": {
+      "function": "weapons:advancement/spark"
+    }
+  }
+  

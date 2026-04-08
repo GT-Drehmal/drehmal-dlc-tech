@@ -11,12 +11,12 @@
             "color": "gold"
         },
         "description": {
-            "text": "Upgraded Zenith, laser gun-sword of Avsohm",
+            "text": "Weathered Avsohm's greatest challenge, and elevated their technology to a new Zenith.",
             "color": "gray"
         },
         "icon": {
             "item": "minecraft:warped_fungus_on_a_stick",
-      "nbt": "{CustomModelData:2}"
+      "nbt": "{CustomModelData:14}"
         },
         "frame": "task",
         "show_toast": true,

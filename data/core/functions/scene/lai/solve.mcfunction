@@ -1,3 +1,4 @@
+
 clone 1123 47 -1224 1123 47 -1224 1108 70 -1198
 summon lightning_bolt 1108 70 -1198
 playsound minecraft:dcustom.ui.toast.challenge_complete ambient @a 1108 70 -1198 10

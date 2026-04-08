@@ -1,0 +1,50 @@
+execute at @s run particle explosion_emitter ~ ~1 ~ 0 0 0 0 1 normal
+execute at @s run playsound minecraft:dcustom.block.fire.extinguish player @a ~ ~ ~ 2 2
+execute at @s run playsound minecraft:dcustom.entity.generic.explode player @a ~ ~ ~ 0.4 2
+forceload remove 27330 757 27347 739
+execute as @a[predicate=players:in_generals_arena] run effect give @s resistance 10 255 true
+execute as @p[tag=bg_questholder] run tag @s add killed_generals
+execute as @p[tag=bg_questholder] run tag @s remove bg_questholder
+kill @e[tag=magma_block]
+kill @e[tag=boom]
+kill @e[tag=temp_boom_marker]
+kill @e[tag=owie]
+kill @e[tag=ethgar_arrow]
+kill @e[tag=ethgar_arrow2]
+kill @e[tag=trap]
+
+summon item ~ ~ ~ {Motion:[0.0, 0.3, 0.25], Item:{id:"minecraft:player_head", Count:1b, tag:{Enchantments:[{id:"minecraft:protection",lvl:4s}],SkullOwner:{Id:[I;-1662615657,1234258414,-1952748472,534218152],Properties:{textures:[{Value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODQ1MDA3ZGZkMzE5YWY5YmMxN2NkNDUxOTQ2ZGFlMDhkZjU2OTZiN2NiZGQ1OGMwY2UyMjFmMmIyNjliYTk5NiJ9fX0="}]}},display:{Name:'{"text":"Helmet of the First General","color":"red","italic":false}'}}}}
+
+summon item ~ ~ ~ {Motion:[0.0, 0.3, -0.25], Item:{id:"minecraft:player_head", Count:1b, tag:{Enchantments:[{id:"minecraft:protection",lvl:4s}],SkullOwner:{Id:[I;-731846051,-1157085290,-1911440066,-1882349407],Properties:{textures:[{Value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Q0Njc5M2JkYmNlNWNhZDVmMzdiMTI0ZWFmMWUzNjg5YmJhMThkNTlhODA2ODU2N2M3NGY0ZmYxYTE4In19fQ=="}]}},display:{Name:'{"text":"Helmet of the Second General","color":"red","italic":false}'}}}}
+
+summon item ~ ~ ~ {Motion:[0.0, 0.5, 0.0], Item:{id:"minecraft:player_head", Count:1b, tag:{Enchantments:[{id:"minecraft:protection",lvl:4s}],SkullOwner:{Id:[I;-715510116,1972850668,-1159482191,-631006333],Properties:{textures:[{Value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzU3NWFhZjc0ZDlkYjA3ODdmMjAwMzM0ZjU3YTUzMjUwZDlhNzQ5ZTU0ZTU5NWY4M2JkYTBkNWNhZGNiNWI1MCJ9fX0="}]}},display:{Name:'{"text":"Helmet of the Third General","color":"red","italic":false}'}}}}
+
+summon item ~ ~ ~ {Motion:[0.25, 0.3, 0.0], Item:{id:"minecraft:diamond_chestplate", Count:1b, tag:{AttributeModifiers:[{Amount:8,AttributeName:"generic.armor",Name:"generic.armor",Slot:"chest",UUID:[I;-125518,16269,18579,-32538]},{Amount:2,AttributeName:"generic.armor_toughness",Name:"generic.armor_toughness",Slot:"chest",UUID:[I;-125518,16569,18579,-33138]},{Amount:-4,AttributeName:"generic.max_health",Name:"1750137098447",Slot:"chest",UUID:[I;-125518,16869,18579,-33738]},{Amount:3,AttributeName:"generic.attack_damage",Name:"1750137098447",Slot:"chest",UUID:[I;-125518,17169,18579,-34338]}],Enchantments:[{id:"minecraft:fire_protection",lvl:4}],HideFlags:2,display:{Lore:['{"extra":[{"italic":true,"color":"dark_purple","text":"Chestplate worn by Rhalon, greatest"}],"text":""}','{"extra":[{"italic":true,"color":"dark_purple","text":"warrior of the Burnt God\'s forces."}],"text":""}','{"extra":[{"italic":true,"color":"dark_purple","text":"This armor has seen many battles."}],"text":""}','{"extra":[{"italic":true,"color":"dark_purple","text":"May it see many more."}],"text":""}','{"extra":[{"italic":true,"color":"dark_purple","text":" "}],"text":""}','{"extra":[{"italic":false,"color":"gray","text":"When on body:"}],"text":""}','{"extra":[{"italic":false,"color":"blue","text":"+8 Armor"}],"text":""}','{"extra":[{"italic":false,"color":"blue","text":"+2 Armor Toughness"}],"text":""}','{"extra":[{"italic":false,"color":"blue","text":"+3 Attack Damage"}],"text":""}','{"extra":[{"italic":false,"color":"blue","text":"-4 Max Health"}],"text":""}','{"extra":[{"italic":true,"color":"dark_purple","text":" "}],"text":""}','{"extra":[{"italic":false,"color":"aqua","text":"Artifact"}],"text":""}'],Name:'["",{"text":"Rhalon\'s Chestplate","italic":false,"color":"aqua","underlined":true}]'}}}}
+
+
+summon item ~ ~ ~ {Motion:[-0.25, 0.3, 0.0], Item:{id:"minecraft:diamond_leggings", Count:1b, tag:{AttributeModifiers:[{Amount:6,AttributeName:"generic.armor",Name:"generic.armor",Slot:"legs",UUID:[I;-125518,203763,185311,-407526]},{Amount:3,AttributeName:"generic.armor_toughness",Name:"generic.armor_toughness",Slot:"legs",UUID:[I;-125518,204063,185311,-408126]},{Amount:3,AttributeName:"generic.max_health",Name:"1750137098447",Slot:"legs",UUID:[I;-125518,204363,185311,-408726]},{Amount:-0.01d,AttributeName:"generic.movement_speed",Name:"1750137098447",Slot:"legs",UUID:[I;-125518,204663,185311,-409326]}],Enchantments:[{id:"minecraft:blast_protection",lvl:4}],HideFlags:2,display:{Lore:['{"text":"Greaves worn by Tevus, stalwart","italic":true,"color":"dark_purple"}','{"text":"custodian of the Burnt God\'s forces.","italic":true,"color":"dark_purple"}','{"text":"This armor has weathered many","italic":true,"color":"dark_purple"}','{"text":"sieges. May it weather many more.","italic":true,"color":"dark_purple"}','{"text":" ","italic":false}','{"text":"When on legs:","italic":false,"color":"gray"}','{"text":"+6 Armor","italic":false,"color":"blue"}','{"text":"+3 Armor Toughness","italic":false,"color":"blue"}','{"text":"+3 Max Health","italic":false,"color":"blue"}','{"text":"-0.01 Movement Speed","italic":false,"color":"blue"}','{"text":" ","italic":false}','{"text":"Artifact","italic":false,"color":"aqua"}'],Name:'["",{"text":"Tevus\' Greaves","italic":false,"color":"aqua","underlined":true}]'}}}}
+
+summon item ~ ~ ~ {Motion:[-0.2, 0.3, -0.2], Item:{id:"minecraft:diamond_boots", Count:1b, tag:{AttributeModifiers:[{Amount:3,AttributeName:"generic.armor",Name:"generic.armor",Slot:"feet",UUID:[I;-125518,230563,185311,-461126]},{Amount:2,AttributeName:"generic.armor_toughness",Name:"generic.armor_toughness",Slot:"feet",UUID:[I;-125518,230863,185311,-461726]},{Amount:-3,AttributeName:"generic.attack_damage",Name:"1750137098447",Slot:"feet",UUID:[I;-125518,231163,185311,-462326]},{Amount:0.02d,AttributeName:"generic.movement_speed",Name:"1750137098447",Slot:"feet",UUID:[I;-125518,231463,185311,-462926]}],Enchantments:[{id:"minecraft:projectile_protection",lvl:4}],HideFlags:2,display:{Lore:['{"text":"Boots worn by Ethgar, ceaseless conqueror","italic":true,"color":"dark_purple"}','{"text":"of the Burnt God\'s forces. This armor has","italic":true,"color":"dark_purple"}','{"text":"taken many lands. May it take many more.","italic":true,"color":"dark_purple"}','{"text":" ","italic":false}','{"text":"When on feet:","italic":false,"color":"gray"}','{"text":"+3 Armor","italic":false,"color":"blue"}','{"text":"+2 Armor Toughness","italic":false,"color":"blue"}','{"text":"+0.02 Movement Speed","italic":false,"color":"blue"}','{"text":"-3 Attack Damage","italic":false,"color":"blue"}','{"text":" ","italic":false}','{"text":"Artifact","italic":false,"color":"aqua"}'],Name:'["",{"text":"Ethgar\'s Boots","italic":false,"color":"aqua","underlined":true}]'}}}}
+
+summon item ~ ~ ~ {Motion:[0.3, 0.3, -0.1], Item:{id: "minecraft:written_book", tag: {pages: ['{"text":"\\n\\n\\n\\nAsh and Ember —\\n\\nWritten by Rhalon —\\n\\nFirst Burnt General —\\n"}', '{"text":"MALEVOLENTIA. \\n\\nThe sword of Maelihs still sits at the peak of his Burnt Palace, the divine power within unreachable. The brightest of our Red Dawn thought its potentia would be forever locked away - but I foresaw a way."}', '{"text":"THE TRAITOR. \\n\\nI do not write his name here, in accord with Maelihs’ wishes. What research and schematics survived him was too scarce to be understood. We required knowledge from someplace else - who better than the wretched corpse of Insohm?"}', '{"text":"THE COVEN. \\n\\nThe Gulch’s warden told of an island near the Shattered Peninsula, a hidden shame of Insohm. There, those of high potentia had their souls sundered for secrets to Aspectlike power. And they claimed themselves the moral betters!"}', '{"text":"ASCENSION. \\n\\nWe learnt of how potentia could be transferred, how godly essence can be rendered to sweet power. The power within Malevolentia could be controlled, given to those who can wield it."}', '{"text":"CONQUEST. \\n\\nWith the blade’s power, we will raise a new legion of Maelmari, with potency rivaling that of those from the Deity War. Nothing will stand in the way of our new invasion."}', '{"text":"All other great powers, from Avsohm to Insohm, have failed the test of time. We will not."}'], RepairCost: 0, author: "Rhalon", display: {Name: '{"text":"The Burning Path"}'}, title: "Burning Path", resolved: 1b}, Count: 1b}}
+
+scoreboard players set #generals tempdeaths 1
+execute as @a run function dlc:telldeaths
+
+setblock 27340 146 747 polished_blackstone
+setblock 27340 147 747 minecraft:stone_button[face=floor]
+particle minecraft:block minecraft:polished_blackstone_bricks 27340 146.5 747 0.3 0.3 0.3 0.1 30
+particle explosion 27340 146.5 747 0 0 0 0.1 1
+playsound minecraft:dcustom.entity.generic.explode block @a 27340 147 747 2 2
+
+scoreboard players set #generals_dead? bool 1
+advancement grant @a only dlc:generals
+
+bossbar set minecraft:health3 visible false
+bossbar set minecraft:health2 visible false
+bossbar set minecraft:health visible false
+
+stopsound @a[tag=generals_music] record
+execute as @a[tag=generals_music] run tag @s add finished
+execute as @a[tag=generals_music] run playsound minecraft:custom.generals_victory record @s
+tag @a[tag=generals_music] remove generals_music

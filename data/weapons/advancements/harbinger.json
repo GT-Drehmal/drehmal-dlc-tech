@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Harbinger:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/harbinger"
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "dlc:harbinger_fang"
+        },
+        "title": {
+            "color": "gold",
+            "text": "Harbinger's Fang"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained A Calamitous Upgrade Component"
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:ruinous"
+}

@@ -1,0 +1,35 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "nbt":"{Lucky:1b}"
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "weapons:advancement/seren"
+    },
+    "display": {
+        "frame": "task",
+        "announce_to_chat": true,
+        "icon": {
+            "item": "mcdw:spear_fortune"
+        },
+        "title": {
+            "color": "red",
+            "text": "Serendipity"
+        },
+        "description": {
+            "color": "gray",
+            "text": "Obtained Serendipity, a particularly lucky spear. Let's go gambling!"
+        },
+        "hidden": true,
+        "show_toast": true
+    },
+    "parent": "weapons:forgotten"
+}

@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "item": "fwaystones:abyss_watcher"
+    },
+    "title": {
+      "text": "The Unspoken Path",
+      "color": "#cd42ff",
+      "italic": false
+    },
+    "description": {
+      "text": "For those who seek more, there is always another horizon to chase.",
+      "color": "green",
+      "italic": false
+    },
+    "background": "minecraft:textures/block/deepslate_tiles.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:location",
+        "conditions": {
+          "player": [
+            {
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "dimension": "minecraft:overworld"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+  

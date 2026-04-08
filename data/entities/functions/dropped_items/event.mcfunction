@@ -22,6 +22,38 @@ execute if score #event temp matches 21 run function entities:ai/warden/kill
 execute if score #event temp matches 22 run function entities:dropped_items/vir_kill
 execute if score #event temp matches 23 run function entities:ai/avhorse/on_death
 execute if score #event temp matches 24 run function entities:ai/samurai/on_death
+execute if score #event temp matches 26 run function entities:dropped_items/crystal
+execute if score #event temp matches 27 run function entities:dropped_items/frosty
+execute if score #event temp matches 28 run function entities:dropped_items/avbot/base
+execute if score #event temp matches 29 run function entities:dropped_items/avbot/boom
+execute if score #event temp matches 30 run function entities:dropped_items/avbot_poison/summon_cloud
+execute if score #event temp matches 31 run function entities:ai/rhalon/death
+execute if score #event temp matches 32 run function entities:ai/tevus/death
+execute if score #event temp matches 33 run function entities:ai/ethgar/death
+execute if score #event temp matches 34 run function quests:mahkarquest/count
+execute if score #event temp matches 35 at @s run function dlc:asc/kill/1
+execute if score #event temp matches 36 at @s run function dlc:asc/kill/2
+execute if score #event temp matches 37 at @s run function dlc:asc/kill/3
+execute if score #event temp matches 38 at @s run function dlc:asc/kill/4
+execute if score #event temp matches 39 run function quests:wellerquest/murder
+execute if score #event temp matches 40 run function dlc:mobs/primal_fury/death
+execute if score #event temp matches 41 run function dlc:mobs/primal_sorrow/death
+execute if score #event temp matches 42 run function dlc:mobs/primal_yearning/death
+execute if score #event temp matches 43 run function dlc:mobs/primal_wrath/death
+execute if score #event temp matches 44 run function dlc:mobs/primal_splitter/death
+execute if score #event temp matches 45 run function dlc:mobs/primal_ravager/death
+execute if score #event temp matches 46 run function dlc:mobs/primal_aegis/death
+execute if score #event temp matches 47 run function dlc:mobs/primal_stalker/death
+execute if score #event temp matches 48 run function dlc:mobs/primal_frost_caller/death
+execute if score #event temp matches 49 run function dlc:mobs/primal_thief/death
+execute if score #event temp matches 50 run function dlc:mobs/crystal_mite/death
+execute if score #event temp matches 51 run function entities:dropped_items/ossein_kill2
+execute if score #event temp matches 52 align xyz positioned ~0.5 ~ ~0.5 run function entities:dropped_items/ossein_horse_kill
+execute if score #event temp matches 53 align xyz positioned ~0.5 ~ ~0.5 run function entities:dropped_items/ossein_kill_default
+execute if score #event temp matches 54 align xyz positioned ~0.5 ~ ~0.5 run function entities:dropped_items/ossein_kill_prime
+execute if score #event temp matches 55 run function dlc:mobs/primal_excavator/death
+execute if score #event temp matches 56 run function quests:cinderquest/why
+
 
 #execute if score #event temp matches 24 align xyz positioned ~0.5 ~5 ~0.5 run function entities:ai/tethlaen/dead_fr_fr
 

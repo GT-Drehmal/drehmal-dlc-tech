@@ -1,8 +1,16 @@
 {
     "values": [
         "minecraft:progress",
+        "minecraft:strangled",
         "minecraft:rubber_nocd",
-        "minecraft:godmachine"
-        
+        "minecraft:zenith",
+        "minecraft:godmachine",
+        "minecraft:ossein_siphon",
+        "minecraft:maso/exsanguinated",
+        "minecraft:fdry_blown",
+        "minecraft:avrad",
+        "minecraft:truedamage",
+        "minecraft:azoth_bullet",
+        "khivewrath_nocd"
     ]
 }
