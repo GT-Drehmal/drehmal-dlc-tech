@@ -20,7 +20,9 @@ tellraw @s {"text":"                 DLC SETTINGS","bold":true,"color":"gray","h
 tellraw @s {"text":" "}
 
 #repeatable
-#function dlc:check6
+# the reason this was disabled by default is repeatable quests is a work in progress and
+# it's uncertain how well it works as of now
+function dlc:check6
 function dlc:check7
 function dlc:check9
 function dlc:givearmor

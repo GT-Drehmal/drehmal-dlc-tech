@@ -1,5 +1,6 @@
 ## Quests
-
+# TODO Note to self: Never abbreviate like this again
+# If we ever start fresh, change all these to "tgr.qst." like in the modify section.
 scoreboard objectives add tgrptch.casey_accept trigger
 scoreboard objectives add tgrptch.chris_accept trigger
 scoreboard objectives add tgrptch.cinder_accept trigger
@@ -21,18 +22,22 @@ scoreboard objectives add tgrptch.weller_accept trigger
 scoreboard objectives add tgrptch.quest_deny trigger
 scoreboard players reset @a tgrptch.quest_deny
 scoreboard players enable @a tgrptch.quest_deny
-# scoreboard objectives add tgrptch.qst_deny trigger
-# scoreboard objectives add tgrptch.qst2_deny trigger
-# scoreboard objectives add tgrptch.qst3_deny trigger
-# scoreboard objectives add tgrptch.qst4_deny trigger
-# scoreboard objectives add tgrptch.qst5_deny trigger
-# scoreboard objectives add tgrptch.qst6_deny trigger
-# scoreboard objectives add tgrptch.qst7_deny trigger
-# scoreboard objectives add tgrptch.qst8_deny trigger
-# scoreboard objectives add tgrptch.qst9_deny trigger
-# scoreboard objectives add tgrptch.qst10_deny trigger
-# scoreboard objectives add tgrptch.qst11_deny trigger
-# scoreboard objectives add tgrptch.qst12_deny trigger
-# scoreboard objectives add tgrptch.qst13_deny trigger
-# scoreboard objectives add tgrptch.qst14_deny trigger
-# scoreboard objectives add tgrptch.qst15_deny trigger
+
+## Upgrade station (modify)
+scoreboard objectives add tgr.mdfy.retrieve trigger
+scoreboard objectives add tgr.mdfy.charge trigger
+scoreboard objectives add tgr.mdfy.hp trigger
+scoreboard objectives add tgr.mdfy.sp trigger
+scoreboard objectives add tgr.mdfy.ar trigger
+scoreboard objectives add tgr.mdfy.as trigger
+scoreboard objectives add tgr.mdfy.at trigger
+scoreboard objectives add tgr.mdfy.hp_b trigger
+scoreboard objectives add tgr.mdfy.sp_b trigger
+scoreboard objectives add tgr.mdfy.ar_b trigger
+scoreboard objectives add tgr.mdfy.as_b trigger
+scoreboard objectives add tgr.mdfy.at_b trigger
+scoreboard objectives add tgr.mdfy.hp_p trigger
+scoreboard objectives add tgr.mdfy.sp_p trigger
+scoreboard objectives add tgr.mdfy.ar_p trigger
+scoreboard objectives add tgr.mdfy.as_p trigger
+scoreboard objectives add tgr.mdfy.at_p trigger
