@@ -1,3 +1,5 @@
+# TODO: Where do we call this
+
 # DESIRED EFFECT: the @e selectors should be global. @p maybe only for the player?
 #
 # ~~"Global" selectors will use one shared trigger (if that's even possible)~~
@@ -19,25 +21,51 @@
 #     maybe because @e is intended for the invisible armor stand
 #     that's holding the item to be modified?)
 
-# =========
+# > When to enable triggers? <
+#     Intuitively, any time a menu is presented the trigger should be enabled for the player 
+#         who's seeing the menu. It seems that menus are always presented to @p[tag=selector]
+#         and **executed at the position of @e[type=armor_stand,distance=..5,tag=display,tag=!invalid]
+#         and the distance restraint is relative to... 26475.47 141.08 -56.00 (core:main)
+#     The way dlc:modify/main implemented this is... a little bit messy, but it makes sense.
+#     So I think it still makes sense to enable the *relevant* triggers in each of the 
+#         "menu" type functions in dlc:modify.
+# > But when do we disable it? <
+#     The lazy (?) answer is that we never disable them (unless a player leaves the server)
+#     Because in the original implementation it's already possible to interact with the
+#         same menu item twice, thus double-running the /execute command.
+#     The only thing that's preventing everyone from doing so is the screen clear, which would
+#         give the same amount of protection for our implementation too.
+# > But do we want to do better? <
+#     We could put in a system to only run the /execute if the player running the trigger
+#         is also the player with the `selector` tag.
+#     We have to analyze the implications, however. Intuitively this would work, since 
+#         if a player doesn't have an "active" menu open, they shouldn't be allowed
+#         to interact with the station.
+#     Might be worth to ask Elmer/tworoundcats about this?
+
+# ======================
 # Legend
-# =========
-# m = Mainhand      1
-# h = Helmet        2
-# c = Chestplate    3
-# l = Leggings      4
-# b = Boots         5
+# ======================
+# m  = Mainhand       1
+# h  = Helmet         2
+# c  = Chestplate     3
+# l  = Leggings       4
+# b  = Boots          5
 # hp = Max Health
 # sp = movement SPeed
 # ar = Armor
 # as = Attack Speed
 # at = ATtack damage
-# b = flat value
-# p = percentage value
+# b  = flat value
+# p  = percentage value
 
-# =================
-# List of /execute
-# =================
+# ====================================================
+# Original /execute selectors and their corresponding 
+# triggers + handler functions
+# ====================================================
+
+# HANDLER: triggerpatch:modify/retrieve
+# TRIGGER: tgr.mdfy.retrieve (1-6)
 # @p[tag=selector]
 #     dlc:modify/retrieve
 #     dlc:modify/retrieve_c
@@ -45,47 +73,58 @@
 #     dlc:modify/retrieve_h
 #     dlc:modify/retrieve_b
 #     dlc:modify/retrieve_c_wings
-#     dlc:modify/charge/1
-#
-# >>> triggerpatch:retrieve (1-6)
-# >>> triggerpatch:charge
 
+# HANDLER: triggerpatch:modify/charge
+# TRIGGER: tgr.mdfy.charge
+# @p[tag=selector]
+#     dlc:modify/charge/1
+
+# HANDLER for all of following: triggerpatch:modify/submenu
+# TRIGGER: tgr.mdfy.hp (1-5)
 # * Why @p?? just use @s at this point
 # *     or more likely intended to be @p to the station?
 # *     but player might execute this from anywhere, this doesn't make sense
 # @p
 #     dlc:modify/hp_m
-#     dlc:modify/sp_m
-#     dlc:modify/ar_m
-#     dlc:modify/as_m
-#     dlc:modify/at_m
 #     dlc:modify/hp_l
-#     dlc:modify/sp_l
-#     dlc:modify/ar_l
-#     dlc:modify/as_l
-#     dlc:modify/at_l
 #     dlc:modify/hp_h
-#     dlc:modify/sp_h
-#     dlc:modify/ar_h
-#     dlc:modify/as_h
-#     dlc:modify/at_h
 #     dlc:modify/hp_c
-#     dlc:modify/sp_c
-#     dlc:modify/ar_c
-#     dlc:modify/as_c
-#     dlc:modify/at_c
 #     dlc:modify/hp_b
-#     dlc:modify/sp_b
-#     dlc:modify/ar_b
-#     dlc:modify/as_b
-#     dlc:modify/at_b
 # 
-# >>> triggerpatch:hp (1-5)
-# >>> triggerpatch:sp (1-5)
-# >>> triggerpatch:ar (1-5)
-# >>> triggerpatch:as (1-5)
-# >>> triggerpatch:at (1-5)
+# TRIGGER: tgr.mdfy.sp
+# @p
+#     dlc:modify/sp_m
+#     dlc:modify/sp_l
+#     dlc:modify/sp_h
+#     dlc:modify/sp_c
+#     dlc:modify/sp_b
+# 
+# TRIGGER: tgr.mdfy.ar
+# @p
+#     dlc:modify/ar_m
+#     dlc:modify/ar_l
+#     dlc:modify/ar_h
+#     dlc:modify/ar_c
+#     dlc:modify/ar_b
+# 
+# TRIGGER: tgr.mdfy.as
+# @p
+#     dlc:modify/as_m
+#     dlc:modify/as_l
+#     dlc:modify/as_h
+#     dlc:modify/as_c
+#     dlc:modify/as_b
+# 
+# TRIGGER: tgr.mdfy.at
+# @p
+#     dlc:modify/at_m
+#     dlc:modify/at_l
+#     dlc:modify/at_h
+#     dlc:modify/at_c
+#     dlc:modify/at_b
 
+# HANDLER for all of following: triggerpatch:modify/apply
+# TRIGGERS: tgr.mdfy.hp_b (1-5), tgr.mdfy.hp_p (1-5)
 # @e[tag=valid,tag=!hp]
 #     unless players:holding/hp
 #         dlc:modify/mainhand/hp_b
@@ -102,6 +141,8 @@
 #     unless players:holding/hp_b
 #         dlc:modify/boots/hp_b
 #         dlc:modify/boots/hp_p
+# 
+# TRIGGERS: tgr.mdfy.sp_b (1-5), tgr.mdfy.sp_p (1-5)
 # @e[tag=valid,tag=!sp]
 #     unless players:holding/sp
 #         dlc:modify/mainhand/sp_b
@@ -118,6 +159,8 @@
 #     unless players:holding/sp_b
 #         dlc:modify/boots/sp_b
 #         dlc:modify/boots/sp_p
+# 
+# TRIGGERS: tgr.mdfy.as_b (1-5), tgr.mdfy.as_p (1-5)
 # @e[tag=valid,tag=!as]
 #     unless players:holding/as
 #         dlc:modify/mainhand/as_b
@@ -134,6 +177,8 @@
 #     unless players:holding/as_b
 #         dlc:modify/boots/as_b
 #         dlc:modify/boots/as_p
+# 
+# TRIGGERS: tgr.mdfy.ar_b (1-5), tgr.mdfy.ar_p (1-5)
 # @e[tag=valid,tag=!ar]
 #     unless players:holding/ar
 #         dlc:modify/mainhand/ar_b
@@ -150,6 +195,8 @@
 #     unless players:holding/ar_b
 #         dlc:modify/boots/ar_b
 #         dlc:modify/boots/ar_p
+# 
+# TRIGGERS: tgr.mdfy.at_b (1-5), tgr.mdfy.at_p (1-5)
 # @e[tag=valid,tag=!at]
 #     unless players:holding/at
 #         dlc:modify/mainhand/at_b
@@ -166,14 +213,3 @@
 #     unless players:holding/at_b
 #         dlc:modify/boots/at_b
 #         dlc:modify/boots/at_p
-# 
-# >>> triggerpatch:hp_b (1-5)
-# >>> triggerpatch:hp_p (1-5)
-# >>> triggerpatch:sp_b (1-5)
-# >>> triggerpatch:sp_p (1-5)
-# >>> triggerpatch:as_b (1-5)
-# >>> triggerpatch:as_p (1-5)
-# >>> triggerpatch:ar_b (1-5)
-# >>> triggerpatch:ar_p (1-5)
-# >>> triggerpatch:at_b (1-5)
-# >>> triggerpatch:at_p (1-5)

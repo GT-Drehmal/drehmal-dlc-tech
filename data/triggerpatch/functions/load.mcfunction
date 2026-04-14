@@ -24,6 +24,7 @@ scoreboard players reset @a tgrptch.quest_deny
 scoreboard players enable @a tgrptch.quest_deny
 
 ## Upgrade station (modify)
+# See triggerpatch:modify/tick for documentation
 scoreboard objectives add tgr.mdfy.retrieve trigger
 scoreboard objectives add tgr.mdfy.charge trigger
 scoreboard objectives add tgr.mdfy.hp trigger
